@@ -1,0 +1,32 @@
+name: Subir ZIP a Hostinger
+
+# Cada push a main empaqueta el proyecto y lo sube a Hostinger por SSH.
+# El build y el reinicio de la app NO ocurren aquí: se lanzan después con deploy.zip.
+on:
+  push:
+    branches: [main] # Cambia a master si esa es tu rama principal
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Crear deploy.zip (sin node_modules, build, .git ni .env)
+        run: |
+          zip -r deploy.zip . \
+            -x ".git/*" ".github/*" "node_modules/*" "build/*" ".react-router/*" ".env"
+          ls -la deploy.zip
+
+      - name: Subir deploy.zip por SSH
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          source: "deploy.zip"
+          target: "domains/teal-horse-312215.hostingersite.com/public_html"
+          overwrite: true
