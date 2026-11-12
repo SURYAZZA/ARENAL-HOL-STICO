@@ -7,9 +7,6 @@ export type Service = {
   retreat?: boolean;
 };
 
-const set = (id: string, w = '1280w') =>
-  `https://images.hostinger.com/203bddc9-5228-4af3-bc44-7628daf7e179/${id}.png?width=375 375w, https://images.hostinger.com/203bddc9-5228-4af3-bc44-7628daf7e179/${id}.png?width=768 768w, https://images.hostinger.com/203bddc9-5228-4af3-bc44-7628daf7e179/${id}.png?width=1024 1024w, https://images.hostinger.com/203bddc9-5228-4af3-bc44-7628daf7e179/${id}.png ${w}`;
-
 export const services: Service[] = [
   {
     slug: 'yoga',
@@ -59,7 +56,6 @@ export const services: Service[] = [
     summary:
       'Estancias de 3 a 10 días que unen varios de estos servicios en un solo viaje. Para quién organiza y para los viajeros sin rutina, un camino guiado por el estilo de vida holístico para entender su verdadero significado y el propósito que tiene en tu vida, para quienes buscan más que solo una experiencia un verdadero aprendizaje.',
     image: 'https://images.hostinger.com/203bddc9-5228-4af3-bc44-7628daf7e179/12444ddd-6b8f-41ba-90e7-18a3a9081a34.png',
-    srcSet: set('12444ddd-6b8f-41ba-90e7-18a3a9081a34', '1344w'),
     retreat: true,
   },
 ];

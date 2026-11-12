@@ -1,0 +1,31 @@
+name: Traer imágenes de Horizons al repositorio
+
+# Descarga las imágenes que aún viven en el CDN de Horizons, las guarda en public/img
+# y reescribe las direcciones del código. Se ejecuta una vez (o a mano si hiciera falta).
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/localizar-imagenes.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  localizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Descargar imágenes y reescribir direcciones
+        run: node scripts/descargar-imagenes.mjs
+      - name: Guardar el resultado en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/img src
+          git diff --cached --quiet && echo "Nada que guardar" && exit 0
+          git commit -m "Guarda en el repositorio las imágenes que estaban en el CDN de Horizons"
+          git push

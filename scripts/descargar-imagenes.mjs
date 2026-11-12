@@ -27,8 +27,9 @@ for await (const file of walk(path.join(root, 'src'))) {
 			const name = decodeURIComponent(url.split('/').pop().split('?')[0]).replace(/[^\w.-]/g, '_');
 			const response = await fetch(url);
 			if (!response.ok) {
-				console.warn(`No se pudo descargar ${url} (${response.status})`);
-				continue;
+				// Si falta una sola imagen se detiene todo: no se guarda nada a medias.
+				console.error(`No se pudo descargar ${url} (${response.status})`);
+				process.exit(1);
 			}
 			await writeFile(path.join(outDir, name), Buffer.from(await response.arrayBuffer()));
 			downloaded.set(url, `/img/${name}`);
