@@ -17,7 +17,7 @@ import { siteOrigin } from '@/lib/site-origin.server';
 
 export const links: Route.LinksFunction = () => [
 	{ rel: 'stylesheet', href: stylesheet },
-	{ rel: 'icon', href: 'https://horizons-cdn.hostinger.com/203bddc9-5228-4af3-bc44-7628daf7e179/c2d5cd835377916f63583a25d2b0bf4f.png', type: 'image/png' },
+	{ rel: 'icon', href: '/img/c2d5cd835377916f63583a25d2b0bf4f.png', type: 'image/png' },
 	{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
 	{
 		rel: 'preconnect',

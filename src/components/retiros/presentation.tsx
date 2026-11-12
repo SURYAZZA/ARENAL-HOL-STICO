@@ -7,7 +7,7 @@ const fallback: PageCopy = {
   eyebrow: 'Un viaje hacia dentro',
   title: 'Desconecta del ruido. Reconecta contigo.',
   body: 'Los retiros de Arenal Holístico se arman con la naturaleza como sala principal. No vendemos un paquete cerrado: acompañamos a hoteles, agencias y organizadores a diseñar una estancia de 3 a 10 días, con grupo, locación y enfoque a la medida. También organizamos retiros propios en función de interesados, si quieres formar parte, afiliate a retiros y te tomaremos en cuenta para nuestras próximas fechas.',
-  image: 'https://horizons-cdn.hostinger.com/203bddc9-5228-4af3-bc44-7628daf7e179/forest-yoga-session-stockcake-KACnS.jpg',
+  image: '/img/forest-yoga-session-stockcake-KACnS.jpg',
 };
 
 export function RetreatPresentation({ copy, plans }: { copy: PageCopy | null; plans: RetreatPlan[] }) {
