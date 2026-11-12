@@ -64,7 +64,7 @@ const ui = {
     en: 'Follow us on social media to keep up with our inspirations, goals and spaces of harmony.',
     fr: "Suis-nous sur les réseaux sociaux pour suivre de près nos inspirations, nos objectifs et nos espaces d'harmonie.",
   },
-  'journal.pinned': { es: 'Publicación fijada', en: 'Pinned post', fr: 'Publication épinglée' },
+  'journal.new': { es: 'Novedades', en: 'New', fr: 'Nouveautés' },
   'journal.empty': {
     es: 'Las próximas publicaciones aparecerán aquí.',
     en: 'Upcoming posts will appear here.',

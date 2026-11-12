@@ -116,17 +116,32 @@ img { max-width: 100%; display: block; }
 .journal { background: #e7edda url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><path d='M20 90c20-40 40-40 50-10 8 24-6 40-24 42' fill='none' stroke='%2370882b' stroke-opacity='0.18' stroke-width='2'/><path d='M90 30c18 8 28 24 18 40' fill='none' stroke='%2370882b' stroke-opacity='0.18' stroke-width='2'/></svg>"); }
 .section-head { max-width: 40rem; margin-bottom: 2rem; }
 .section-head h2, .plans h2, .contact h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.05; margin: 0 0 0.6rem; }
-.journal-masonry { columns: 2; column-gap: 1.2rem; }
-.journal-masonry .post { display: block; width: 100%; break-inside: avoid; margin: 0 0 1.2rem; }
-.journal-masonry .empty { break-inside: avoid; }
-.post { background: #f7f4ec; border-radius: 1.4rem; overflow: hidden; }
-.post-media { width: 100%; background: #efe9db; }
-.post-media img { display: block; width: 100%; height: auto; }
-.post div, .featured div { padding: 1.2rem 1.3rem 1.4rem; }
-.post-date { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: #8aa04a; margin: 0 0 0.4rem; }
-.post h3 { margin: 0.2rem 0 0.4rem; font-size: 1.55rem; }
-.post-body { color: #4d5840; }
-.archive { margin-top: 1.2rem; }
+.journal-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; align-items: start; margin-bottom: 1.6rem; }
+.post { background: #f7f4ec; border: 1px solid #dfe5cf; border-radius: 1.4rem; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.1rem; min-width: 0; }
+.post-head { display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+.post-tag { display: inline-block; padding: 0.28rem 0.8rem; border-radius: 999px; background: #617e20; color: #f7f4ec; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.post-date { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: #70882b; margin: 0; }
+.post h3 { margin: 0; font-size: clamp(1.35rem, 2vw, 1.7rem); line-height: 1.15; overflow-wrap: anywhere; }
+/* La foto conserva su proporción y nunca se recorta; solo se limita su alto para que ninguna domine. */
+.post-media { display: flex; justify-content: center; background: #ece7d8; border-radius: 1rem; overflow: hidden; }
+.post-media img { display: block; width: 100%; height: auto; max-height: 26rem; object-fit: contain; }
+.post-text { display: grid; gap: 0.7rem; }
+.post-text p { margin: 0; overflow-wrap: anywhere; white-space: pre-line; }
+.post-excerpt { font-size: 1.05rem; color: #2a3320; }
+.post-body { color: #4d5840; line-height: 1.6; }
+/* Foto vertical: va a un costado y todo el texto al otro. En la columna derecha se invierte para que las fotos queden hacia afuera. */
+.post.vertical { flex-direction: row; align-items: flex-start; gap: 1.3rem; }
+.post.vertical .post-media { flex: 0 0 46%; }
+.post.vertical .post-media img { max-height: 30rem; }
+.post-side { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 1rem; }
+.journal-grid .post.vertical:nth-child(even) { flex-direction: row-reverse; }
+/* La fijada ocupa la fila completa y es la única más grande. */
+.post.featured { margin-bottom: 1.6rem; padding: 2rem; }
+.post.featured h3 { font-size: clamp(1.7rem, 3vw, 2.5rem); }
+.post.featured .post-media { background: transparent; }
+.post.featured .post-media img { max-height: 36rem; }
+.post.featured.vertical .post-media { flex-basis: 38%; }
+.post.featured .post-excerpt { font-size: 1.2rem; }
 .reviews { background: #f4f1e8; }
 .review-list { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap: 0; }
 .review-list li { padding: 1.4rem 0; border-top: 1px solid #d3d8c4; max-width: 46rem; }
@@ -178,6 +193,21 @@ dd { margin: 0.15rem 0 0; }
 .star { background: none; border: 0; font-size: 1.4rem; color: #c5cbb6; cursor: pointer; }
 .star.on { color: #617e20; }
 .status { margin-top: 0.6rem; }
+.admin header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem; }
+.admin .row { align-items: center; }
+.admin h2 { margin: 2rem 0 0.8rem; font-size: 1.5rem; }
+.admin li .row { margin-top: 0.5rem; }
+.tabs { flex-wrap: wrap; }
+.hint { color: #5c684c; font-size: 0.88rem; }
+.check { display: flex; align-items: center; gap: 0.5rem; }
+.image-field { display: grid; gap: 0.6rem; }
+.image-preview { max-width: 14rem; max-height: 14rem; border-radius: 0.8rem; border: 1px solid #c9d0b6; }
+.filter { max-width: 20rem; margin-bottom: 1rem; }
+.log-wrap { overflow-x: auto; }
+.log { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.log th, .log td { text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid #e0e4d4; vertical-align: top; }
+.log th { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #617e20; }
+.log td:first-child { white-space: nowrap; color: #5c684c; }
 .about { padding: 5.5rem 7vw; background: #faf8f1; text-align: center; border-top: 1px solid #e3e7d5; }
 .about-head { max-width: 40rem; margin: 0 auto 2.6rem; }
 .about-head h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.05; margin: 0 0 0.6rem; }
@@ -202,10 +232,16 @@ dd { margin: 0.15rem 0 0; }
 .lang-menu { position: absolute; top: calc(100% + 0.5rem); right: 0; z-index: 30; min-width: 11rem; margin: 0; padding: 0.35rem; list-style: none; background: #f7f4ec; border: 1px solid #d3d8c4; border-radius: 1rem; box-shadow: 0 16px 40px rgba(42, 51, 32, 0.18); }
 .lang-menu button { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; width: 100%; min-height: 44px; padding: 0.4rem 0.8rem; border: 0; border-radius: 0.7rem; background: transparent; color: #2a3320; font: inherit; text-align: left; cursor: pointer; }
 .lang-menu button:hover, .lang-menu button[aria-selected="true"] { background: #e7edda; }
+@media (max-width: 520px) {
+  /* En celular angosto la foto vertical pasa arriba del texto. */
+  .post.vertical, .journal-grid .post.vertical:nth-child(even) { flex-direction: column; }
+  .post.vertical .post-media, .post.featured.vertical .post-media { flex-basis: auto; width: 100%; }
+}
 @media (max-width: 860px) {
   .site-header { flex-wrap: wrap; }
   .site-header nav { margin-left: 0; width: 100%; }
-  .journal-masonry { columns: 1; }
+  .journal-grid { grid-template-columns: 1fr; }
+  .post, .post.featured { padding: 1.2rem; }
 .contact, .services-page li, .plans li, .services-page li:nth-child(even), .plans li:nth-child(even), .site-footer { grid-template-columns: 1fr; }
   .services-page li:nth-child(even) img, .plans li:nth-child(even) img { order: 0; }
   .header-cta { display: none; }

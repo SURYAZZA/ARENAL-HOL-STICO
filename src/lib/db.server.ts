@@ -7,7 +7,7 @@
  * Variables de entorno (Node.js; el host se fuerza a 127.0.0.1):
  *   DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
  */
-import { LOCAL_IMAGES } from './local-images.server';
+import { IMAGE_SIZES, LOCAL_IMAGES } from './local-images.server';
 import mysql, { type Pool, type RowDataPacket, type ResultSetHeader } from 'mysql2/promise';
 import { randomBytes } from 'node:crypto';
 import logger from '@/lib/logger.server';
@@ -38,6 +38,8 @@ function getPool(): Pool {
 		password: process.env.DB_PASSWORD,
 		...base,
 	});
+	// Todas las fechas se guardan en UTC, sin depender de la zona horaria del servidor.
+	pool.pool.on('connection', connection => connection.query("SET time_zone = '+00:00'"));
 
 	return pool;
 }
@@ -111,7 +113,60 @@ const TABLES = [
 		id CHAR(15) PRIMARY KEY,
 		notify_email VARCHAR(190) NOT NULL DEFAULT ''
 	) CHARACTER SET utf8mb4`,
+	`CREATE TABLE IF NOT EXISTS admins (
+		id CHAR(15) PRIMARY KEY,
+		name VARCHAR(120) NOT NULL,
+		email VARCHAR(190) NOT NULL UNIQUE,
+		password_hash VARCHAR(255) NOT NULL,
+		created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) CHARACTER SET utf8mb4`,
+	`CREATE TABLE IF NOT EXISTS admin_log (
+		id BIGINT AUTO_INCREMENT PRIMARY KEY,
+		actor_id CHAR(15) NOT NULL,
+		actor_name VARCHAR(120) NOT NULL,
+		actor_email VARCHAR(190) NOT NULL,
+		action VARCHAR(400) NOT NULL,
+		created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		INDEX admin_log_created (created)
+	) CHARACTER SET utf8mb4`,
+	`CREATE TABLE IF NOT EXISTS uploads (
+		id CHAR(15) PRIMARY KEY,
+		mime VARCHAR(40) NOT NULL,
+		width INT NOT NULL DEFAULT 0,
+		height INT NOT NULL DEFAULT 0,
+		data MEDIUMBLOB NOT NULL,
+		uploaded_by VARCHAR(190) NOT NULL DEFAULT '',
+		created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) CHARACTER SET utf8mb4`,
 ];
+
+/** Columnas añadidas después de la primera versión: [tabla, columna, definición]. */
+const COLUMNS: [string, string, string][] = [
+	['blog_posts', 'cover_w', 'INT NOT NULL DEFAULT 0'],
+	['blog_posts', 'cover_h', 'INT NOT NULL DEFAULT 0'],
+	['site_settings', 'owner_name', "VARCHAR(120) NOT NULL DEFAULT ''"],
+];
+
+async function addMissingColumns(): Promise<void> {
+	const db = getPool();
+	for (const [table, column, definition] of COLUMNS) {
+		const [rows] = await db.query<RowDataPacket[]>(
+			'SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? AND COLUMN_NAME = ?',
+			[table, column],
+		);
+		if (rows.length === 0) await db.query(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+	}
+}
+
+/** Rellena las medidas de portada que falten cuando la foto es una de las guardadas en public/img. */
+async function measureCovers(): Promise<void> {
+	const db = getPool();
+	const [rows] = await db.query<RowDataPacket[]>("SELECT id, cover FROM blog_posts WHERE cover_w = 0 AND cover LIKE '/img/%'");
+	for (const row of rows) {
+		const size = IMAGE_SIZES[String(row.cover).slice('/img/'.length)];
+		if (size) await db.query('UPDATE blog_posts SET cover_w = ?, cover_h = ? WHERE id = ?', [size[0], size[1], row.id]);
+	}
+}
 
 async function count(table: string): Promise<number> {
 	const [rows] = await getPool().query<RowDataPacket[]>(`SELECT COUNT(*) AS n FROM ${table}`);
@@ -121,12 +176,13 @@ async function count(table: string): Promise<number> {
 async function setup(): Promise<void> {
 	const db = getPool();
 	for (const statement of TABLES) await db.query(statement);
+	await addMissingColumns();
 
 	if ((await count('blog_posts')) === 0) {
 		for (const post of SEED.blog_posts) {
 			await db.query(
 				'INSERT INTO blog_posts (id, title, excerpt, body, cover, pinned, published, published_at) VALUES (?,?,?,?,?,?,?,?)',
-				[newId(), post.title, post.excerpt, post.body, post.cover, post.pinned ? 1 : 0, post.published ? 1 : 0, post.published_at.replace(' ', 'T')],
+				[newId(), post.title, post.excerpt, post.body, post.cover, post.pinned ? 1 : 0, post.published ? 1 : 0, new Date(post.published_at.replace(' ', 'T'))],
 			);
 		}
 	}
@@ -146,6 +202,7 @@ async function setup(): Promise<void> {
 		}
 	}
 	await localizeImages();
+	await measureCovers();
 	logger.info('Base de datos lista');
 }
 

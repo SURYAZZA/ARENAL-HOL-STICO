@@ -4,6 +4,9 @@ export type BlogPost = {
   excerpt: string;
   body: string;
   cover: string;
+  /** Medidas de la portada en píxeles; 0 si no se conocen. */
+  cover_w: number;
+  cover_h: number;
   pinned: boolean;
   published: boolean;
   published_at: string;
@@ -53,14 +56,18 @@ export type ContactNote = {
   created: string;
 };
 
+export type AdminAccount = { id: string; name: string; email: string; owner: boolean; created?: string };
+
+export type LogEntry = { id: number; name: string; email: string; action: string; created: string };
+
 export function splitJournal(posts: BlogPost[]) {
   const published = posts.filter(post => post.published !== false);
   const pinned = published.find(post => post.pinned) ?? null;
   const rest = published.filter(post => post.id !== pinned?.id);
   return {
     pinned,
-    recent: rest.slice(0, 2),
-    archive: rest.slice(2),
+    recent: rest.slice(0, 4),
+    archive: rest.slice(4),
   };
 }
 

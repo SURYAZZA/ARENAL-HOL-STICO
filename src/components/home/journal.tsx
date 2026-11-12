@@ -4,22 +4,61 @@ import type { BlogPost } from '@/lib/content';
 import { splitJournal } from '@/lib/content';
 import { formatLongDate, useLang } from '@/lib/i18n';
 
-function Card({ post, featured }: { post: BlogPost; featured?: boolean }) {
+/**
+ * Una publicación del blog. La forma depende de la foto:
+ *  - horizontal (o sin foto): título y fecha arriba, foto, texto debajo.
+ *  - vertical: foto a un costado y todo el texto al otro.
+ * La foto nunca se recorta; solo se ajusta su tamaño.
+ */
+function Card({ post, featured, isNew }: { post: BlogPost; featured?: boolean; isNew?: boolean }) {
   const { t, tx, lang } = useLang();
-  return (
-    <article className={featured ? 'post featured' : 'post'}>
-      {post.cover ? (
-        <div className="post-media">
-          <img src={post.cover} alt="" loading="lazy" />
-        </div>
-      ) : null}
-      <div>
-        {featured ? <p className="eyebrow">{t('journal.pinned')}</p> : null}
-        <p className="post-date">{formatLongDate(post.published_at, lang)}</p>
-        <h3>{tx(post.title)}</h3>
-        <p>{tx(post.excerpt)}</p>
-        <p className="post-body">{tx(post.body)}</p>
+  // Publicaciones antiguas pueden no traer medidas: se leen al cargar la foto.
+  const [size, setSize] = useState<[number, number]>([post.cover_w, post.cover_h]);
+  const vertical = Boolean(post.cover) && size[1] > size[0] * 1.02;
+
+  const head = (
+    <header className="post-head">
+      {isNew ? <span className="post-tag">{t('journal.new')}</span> : null}
+      <p className="post-date">{formatLongDate(post.published_at, lang)}</p>
+      <h3>{tx(post.title)}</h3>
+    </header>
+  );
+  const media = post.cover ? (
+    <div className="post-media">
+      <img
+        src={post.cover}
+        alt=""
+        loading="lazy"
+        width={size[0] || undefined}
+        height={size[1] || undefined}
+        onLoad={event => {
+          const image = event.currentTarget;
+          if (!size[0] && image.naturalWidth) setSize([image.naturalWidth, image.naturalHeight]);
+        }}
+      />
+    </div>
+  ) : null;
+  const text = (
+    <div className="post-text">
+      <p className="post-excerpt">{tx(post.excerpt)}</p>
+      <p className="post-body">{tx(post.body)}</p>
+    </div>
+  );
+
+  const className = ['post', vertical ? 'vertical' : 'horizontal', featured ? 'featured' : ''].filter(Boolean).join(' ');
+  return vertical ? (
+    <article className={className}>
+      {media}
+      <div className="post-side">
+        {head}
+        {text}
       </div>
+    </article>
+  ) : (
+    <article className={className}>
+      {head}
+      {media}
+      {text}
     </article>
   );
 }
@@ -31,7 +70,7 @@ export function Journal({ posts }: { posts: BlogPost[] }) {
   const [open, setOpen] = useState(openByLink);
   const expanded = open || openByLink;
   const { pinned, recent, archive } = splitJournal(posts);
-  const visible = pinned ? [pinned, ...recent] : recent;
+  const shown = expanded ? [...recent, ...archive] : recent;
 
   return (
     <section className="band journal" id="diario">
@@ -40,26 +79,18 @@ export function Journal({ posts }: { posts: BlogPost[] }) {
         <h2>{t('journal.title')}</h2>
         <p>{t('journal.intro')}&nbsp;</p>
       </div>
-      <div className="journal-masonry">
-        {visible.map((post, index) => (
-          <Card key={post.id} post={post} featured={index === 0 && Boolean(pinned)} />
+      {pinned ? <Card post={pinned} featured /> : null}
+      <div className="journal-grid">
+        {shown.map((post, index) => (
+          <Card key={post.id} post={post} isNew={index === 0} />
         ))}
-        {visible.length === 0 ? <p className="empty">{t('journal.empty')}</p> : null}
       </div>
-      {expanded && archive.length > 0 ? (
-        <div className="journal-masonry archive">
-          {archive.map(post => (
-            <Card key={post.id} post={post} />
-          ))}
-        </div>
-      ) : null}
+      {!pinned && shown.length === 0 ? <p className="empty">{t('journal.empty')}</p> : null}
       {archive.length > 0 ? (
         <button type="button" className="btn ghost" onClick={() => setOpen(value => !value)} aria-expanded={expanded}>
           {expanded ? t('journal.hide') : t('journal.more')}
         </button>
-      ) : (
-        <p className="quiet">{t('journal.quiet')}</p>
-      )}
+      ) : null}
     </section>
   );
 }

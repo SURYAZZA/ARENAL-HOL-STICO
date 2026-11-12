@@ -1,12 +1,13 @@
 import type { RowDataPacket } from 'mysql2/promise';
 import { iso, query } from '@/lib/db.server';
 import logger from '@/lib/logger.server';
-import type { BlogPost, ContactNote, PageCopy, RetreatPlan, Review } from '@/lib/content';
+import type { AdminAccount, BlogPost, LogEntry, ContactNote, PageCopy, RetreatPlan, Review } from '@/lib/content';
 
 type Row = RowDataPacket & Record<string, any>;
 
 const toPost = (r: Row): BlogPost => ({
 	id: r.id, title: r.title, excerpt: r.excerpt, body: r.body, cover: r.cover,
+	cover_w: Number(r.cover_w ?? 0), cover_h: Number(r.cover_h ?? 0),
 	pinned: !!r.pinned, published: !!r.published, published_at: iso(r.published_at), created: iso(r.created),
 });
 const toReview = (r: Row): Review => ({
@@ -37,7 +38,7 @@ async function safe<T>(fallback: T, job: () => Promise<T>): Promise<T> {
 
 export const publicPosts = () =>
 	safe<BlogPost[]>([], async () =>
-		(await query<Row>('SELECT * FROM blog_posts WHERE published = 1 ORDER BY published_at DESC LIMIT 80')).map(toPost));
+		(await query<Row>('SELECT * FROM blog_posts WHERE published = 1 ORDER BY published_at DESC, created DESC LIMIT 80')).map(toPost));
 
 export const publicReviews = () =>
 	safe<Review[]>([], async () =>
@@ -54,13 +55,15 @@ export const retreatCopy = () =>
 	});
 
 export async function adminSnapshot() {
-	const [posts, reviews, plans, copy, notes, settings] = await Promise.all([
+	const [posts, reviews, plans, copy, notes, settings, admins, log] = await Promise.all([
 		query<Row>('SELECT * FROM blog_posts ORDER BY published_at DESC'),
 		query<Row>('SELECT * FROM reviews ORDER BY created DESC'),
 		query<Row>('SELECT * FROM retreat_plans ORDER BY sort_order ASC'),
 		query<Row>("SELECT * FROM page_copy WHERE page_key = 'retiros' LIMIT 1"),
 		query<Row>('SELECT * FROM contacts ORDER BY created DESC LIMIT 200'),
 		query<Row>('SELECT * FROM site_settings LIMIT 1'),
+		query<Row>('SELECT id, name, email, created FROM admins ORDER BY created ASC'),
+		query<Row>('SELECT id, actor_name, actor_email, action, created FROM admin_log ORDER BY id DESC LIMIT 500'),
 	]);
 	return {
 		posts: posts.map(toPost),
@@ -69,5 +72,7 @@ export async function adminSnapshot() {
 		copy: copy[0] ? toCopy(copy[0]) : null,
 		notes: notes.map(toNote),
 		notifyEmail: String(settings[0]?.notify_email ?? ''),
+		admins: admins.map((r): AdminAccount => ({ id: r.id, name: r.name, email: r.email, owner: false, created: iso(r.created) })),
+		log: log.map((r): LogEntry => ({ id: Number(r.id), name: r.actor_name, email: r.actor_email, action: r.action, created: iso(r.created) })),
 	};
 }
