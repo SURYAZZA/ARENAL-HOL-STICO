@@ -12,9 +12,15 @@ import { formatLongDate, useLang } from '@/lib/i18n';
  */
 function Card({ post, featured, isNew }: { post: BlogPost; featured?: boolean; isNew?: boolean }) {
   const { t, tx, lang } = useLang();
+  const [open, setOpen] = useState(false);
   // Publicaciones antiguas pueden no traer medidas: se leen al cargar la foto.
   const [size, setSize] = useState<[number, number]>([post.cover_w, post.cover_h]);
   const vertical = Boolean(post.cover) && size[1] > size[0] * 1.02;
+  // La fijada siempre lleva el texto a un costado, sea cual sea la forma de la foto.
+  const sideBySide = vertical || (Boolean(featured) && Boolean(post.cover));
+  // Proporción ancho/alto: la tarjeta se ajusta a ella para que la foto nunca lleve relleno a los lados.
+  const ratio = size[0] && size[1] ? size[0] / size[1] : 1.5;
+  const body = tx(post.body).trim();
 
   const head = (
     <header className="post-head">
@@ -41,13 +47,21 @@ function Card({ post, featured, isNew }: { post: BlogPost; featured?: boolean; i
   const text = (
     <div className="post-text">
       <p className="post-excerpt">{tx(post.excerpt)}</p>
-      <p className="post-body">{tx(post.body)}</p>
+      {open && body ? <p className="post-body">{body}</p> : null}
+      {body ? (
+        <button type="button" className="post-more" onClick={() => setOpen(value => !value)} aria-expanded={open}>
+          {open ? t('journal.less') : t('journal.read')}
+        </button>
+      ) : null}
     </div>
   );
 
-  const className = ['post', vertical ? 'vertical' : 'horizontal', featured ? 'featured' : ''].filter(Boolean).join(' ');
-  return vertical ? (
-    <article className={className}>
+  const className = ['post', sideBySide ? 'side' : 'stacked', vertical ? 'vertical' : 'horizontal', featured ? 'featured' : '']
+    .filter(Boolean)
+    .join(' ');
+  const style = { '--ratio': ratio.toFixed(4) } as React.CSSProperties;
+  return sideBySide ? (
+    <article className={className} style={style}>
       {media}
       <div className="post-side">
         {head}
@@ -55,7 +69,7 @@ function Card({ post, featured, isNew }: { post: BlogPost; featured?: boolean; i
       </div>
     </article>
   ) : (
-    <article className={className}>
+    <article className={className} style={style}>
       {head}
       {media}
       {text}
