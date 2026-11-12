@@ -20,7 +20,7 @@ export const services: Service[] = [
     name: 'Meditaciones',
     summary:
       'Pausas guiadas sin mística forzada. Claridad, presencia y un silencio que se sostiene aunque el grupo sea nuevo.\nUna guía seria que busca traer a las personas a un espacio de silencio y paz real, lejos del estrés y las responsabilidades del mundo real, un verdadero descanso de la mente.',
-    image: '/img/captura-de-pantalla-2026-11-02-190924-39D5D.png',
+    image: '/img/captura-de-pantalla-2026-11-02-190924-39D5D.webp',
   },
   {
     slug: 'sono',
@@ -41,7 +41,7 @@ export const services: Service[] = [
     name: 'Baños de bosque',
     summary:
       'Inmersión lenta entre árboles y niebla. La experiencia que diferencia un lodge de Arenal: el bienestar sale de la sala y entra al sendero.\n\nUn espacio para respirar el aire fresco, sentir tu piel en contacto con la tierra, la madera y el viento, para sentir nuevamente esa conexión con lo natural y lo auténtico que tanto cuesta encontrar hoy en día.',
-    image: '/img/r-UUGln.png',
+    image: '/img/r-UUGln.webp',
   },
   {
     slug: 'talleres',
@@ -55,7 +55,7 @@ export const services: Service[] = [
     name: 'Retiros',
     summary:
       'Estancias de 3 a 10 días que unen varios de estos servicios en un solo viaje. Para quién organiza y para los viajeros sin rutina, un camino guiado por el estilo de vida holístico para entender su verdadero significado y el propósito que tiene en tu vida, para quienes buscan más que solo una experiencia un verdadero aprendizaje.',
-    image: '/img/12444ddd-6b8f-41ba-90e7-18a3a9081a34.png',
+    image: '/img/12444ddd-6b8f-41ba-90e7-18a3a9081a34.webp',
     retreat: true,
   },
 ];

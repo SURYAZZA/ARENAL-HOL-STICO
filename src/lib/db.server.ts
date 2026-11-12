@@ -7,6 +7,7 @@
  * Variables de entorno (Node.js; el host se fuerza a 127.0.0.1):
  *   DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
  */
+import { LOCAL_IMAGES } from './local-images.server';
 import mysql, { type Pool, type RowDataPacket, type ResultSetHeader } from 'mysql2/promise';
 import { randomBytes } from 'node:crypto';
 import logger from '@/lib/logger.server';
@@ -144,7 +145,35 @@ async function setup(): Promise<void> {
 			]);
 		}
 	}
+	await localizeImages();
 	logger.info('Base de datos lista');
+}
+
+const CDN_URL = /https:\/\/(?:horizons-cdn|images)\.hostinger\.com\/[^"'`)\s<]+/g;
+
+const toLocal = (text: string): string =>
+	text.replace(CDN_URL, url => {
+		const name = decodeURIComponent(url.split('/').pop()!.split('?')[0]).replace(/[^\w.-]/g, '_');
+		return LOCAL_IMAGES[name] ? `/img/${LOCAL_IMAGES[name]}` : url;
+	});
+
+/** Corrige direcciones ya guardadas que apuntaban al CDN de Horizons. Solo toca filas que aún las tengan. */
+async function localizeImages(): Promise<void> {
+	const db = getPool();
+	const targets: [string, string[]][] = [
+		['blog_posts', ['cover', 'body']],
+		['retreat_plans', ['image']],
+		['page_copy', ['image', 'body']],
+	];
+	for (const [table, columns] of targets) {
+		const where = columns.map(column => `${column} LIKE '%.hostinger.com/%'`).join(' OR ');
+		const [rows] = await db.query<RowDataPacket[]>(`SELECT id, ${columns.join(', ')} FROM ${table} WHERE ${where}`);
+		for (const row of rows) {
+			const next = columns.map(column => toLocal(String(row[column] ?? '')));
+			if (next.every((value, i) => value === String(row[columns[i]] ?? ''))) continue;
+			await db.query(`UPDATE ${table} SET ${columns.map(column => `${column} = ?`).join(', ')} WHERE id = ?`, [...next, row.id]);
+		}
+	}
 }
 
 /** Crea tablas y contenido inicial una sola vez; si falla, el próximo pedido lo reintenta. */

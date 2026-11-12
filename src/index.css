@@ -187,8 +187,15 @@ dd { margin: 0.15rem 0 0; }
 .about-team img { width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: cover; border-radius: 50%; border: 5px solid #faf8f1; box-shadow: 0 0 0 2px #8aa04a, 0 18px 40px rgba(42, 51, 32, 0.18); transition: box-shadow 0.25s; }
 .about-team li:hover img, .about-team li:focus-within img { box-shadow: 0 0 0 3px #617e20, 0 22px 46px rgba(42, 51, 32, 0.26); }
 .about-team h3 { margin: 1rem 0 0; font-size: clamp(0.95rem, 1.8vw, 1.4rem); line-height: 1.2; }
-.about-bio { position: absolute; left: 50%; top: 100%; z-index: 20; width: min(28rem, 86vw); margin: 0.9rem 0 0; padding: 1.1rem 1.3rem; background: #f7f4ec; border: 1px solid #d3d8c4; border-radius: 1.4rem; box-shadow: 0 16px 40px rgba(42, 51, 32, 0.18); color: #4d5840; font-size: 1rem; line-height: 1.55; text-align: center; opacity: 0; visibility: hidden; transform: translate(-50%, 8px); transition: opacity 0.25s, transform 0.25s, visibility 0.25s; pointer-events: none; }
+.about-team li { position: relative; }
+.about-bio { position: absolute; left: 50%; top: 100%; z-index: 20; width: min(26rem, 80vw); margin: 0.9rem 0 0; padding: 1.1rem 1.3rem; background: #f7f4ec; border: 1px solid #d3d8c4; border-radius: 1.4rem; box-shadow: 0 16px 40px rgba(42, 51, 32, 0.18); color: #4d5840; font-size: 1rem; line-height: 1.55; text-align: center; opacity: 0; visibility: hidden; transform: translate(-50%, 8px); transition: opacity 0.25s, transform 0.25s, visibility 0.25s; pointer-events: none; }
 .about-team li:hover .about-bio, .about-team li:focus-within .about-bio { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+@media (max-width: 860px) {
+  /* En pantallas angostas el cuadro se alinea al borde de su foto para no salirse de la pantalla. */
+  .about-team li:first-child .about-bio { left: 0; transform: translate(0, 8px); }
+  .about-team li:last-child .about-bio { left: auto; right: 0; transform: translate(0, 8px); }
+  .about-team li:first-child:hover .about-bio, .about-team li:first-child:focus-within .about-bio, .about-team li:last-child:hover .about-bio, .about-team li:last-child:focus-within .about-bio { transform: translate(0, 0); }
+}
 .lang-switcher { position: relative; margin-left: 0.4rem; }
 .lang-trigger { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 40px; padding: 0 0.85rem; border-radius: 999px; border: 1px solid #8aa04a; background: transparent; color: #344326; font: inherit; font-size: 0.9rem; letter-spacing: 0.06em; cursor: pointer; transition: background 0.2s, color 0.2s; }
 .lang-trigger:hover, .lang-trigger[aria-expanded="true"] { background: #617e20; color: #f7f4ec; }
