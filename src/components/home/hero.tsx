@@ -13,8 +13,7 @@ export function Hero() {
           {t('hero.title1')}
           <i>{t('hero.title2')}</i>
         </h1>
-        <p className="lede">{t('hero.lede')}</p>
-        <a className="btn" href="/servicios">
+        <a className="btn hero-cta" href="/servicios">
           {t('hero.cta')}
         </a>
       </div>

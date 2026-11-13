@@ -42,16 +42,7 @@ const ui = {
   },
   'hero.title1': { es: 'Vuelve a tu esencia.', en: 'Return to your essence.', fr: 'Reviens à ton essence.' },
   'hero.title2': { es: ' Encuentra tu equilibrio.', en: ' Find your balance.', fr: ' Trouve ton équilibre.' },
-  'hero.lede': {
-    es: 'Un espacio para respirar, reconectar y cultivar la salud emocional. Experiencias holísticas que unen el cuidado interior con la fuerza del bosque de Arenal — pensadas para personas, y también para quien organiza el viaje.',
-    en: 'A space to breathe, reconnect and nurture emotional health. Holistic experiences that join inner care with the strength of the Arenal forest — designed for individuals, and also for those who organize the trip.',
-    fr: "Un espace pour respirer, se reconnecter et cultiver la santé émotionnelle. Des expériences holistiques qui unissent le soin intérieur à la force de la forêt d'Arenal — pensées pour les personnes, et aussi pour celles et ceux qui organisent le voyage.",
-  },
-  'hero.cta': {
-    es: 'Descubre nuestras experiencias',
-    en: 'Discover our experiences',
-    fr: 'Découvre nos expériences',
-  },
+  'hero.cta': { es: 'Descubre', en: 'Discover', fr: 'Découvre' },
 
   'journal.eyebrow': { es: 'El diario de Arenal', en: 'The Arenal Journal', fr: "Le journal d'Arenal" },
   'journal.title': {
