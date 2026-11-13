@@ -112,6 +112,11 @@ img { max-width: 100%; display: block; }
 .hero .btn { background: #f4f1e8; color: #2a3320; }
 /* Botón de inicio: contorno rojo borgoña para que destaque sobre el verde de la foto. */
 .hero .hero-cta { border: 2px solid #7d1a2b; color: #7d1a2b; font-weight: 600; letter-spacing: 0.08em; padding-inline: 2.2rem; box-shadow: 0 0 0 1px rgba(244, 241, 232, 0.5); }
+/* El botón va centrado bajo el título y separado de él. El título se limita a un ancho cercano
+   al de sus líneas para que "centrado" coincida con lo que se ve. */
+.hero-copy--bare { width: fit-content; }
+.hero-copy--bare h1 { max-width: 6.4em; margin-bottom: 0; }
+.hero .hero-cta { display: flex; width: fit-content; margin: 2.8rem auto 0; }
 .hero .hero-cta:hover { background: #7d1a2b; color: #f4f1e8; }
 @media (min-width: 861px) {
   /* Pantalla ancha: la foto se agranda y se corre a la izquierda para que el ave quede en ese lado
@@ -121,7 +126,7 @@ img { max-width: 100%; display: block; }
     linear-gradient(255deg, rgba(22, 32, 16, 0.84) 0%, rgba(22, 32, 16, 0.6) 34%, rgba(22, 32, 16, 0.06) 60%, rgba(22, 32, 16, 0.1) 100%),
     linear-gradient(180deg, rgba(22, 32, 16, 0.18) 0%, transparent 28%, rgba(22, 32, 16, 0.3) 100%); }
   .hero { align-items: center; }
-  .hero-copy { justify-self: end; width: min(44vw, 38rem); margin: 14vh 6vw 8vh 0; }
+  .hero-copy { justify-self: end; max-width: min(44vw, 38rem); margin: 14vh 8vw 8vh 0; }
 }
 .lede, .page-intro p, .retreat-hero p { font-size: 1.15rem; line-height: 1.65; max-width: 38rem; }
 .band, .reviews, .page-intro, .plans { padding: 5.5rem 7vw; }
@@ -253,6 +258,10 @@ dd { margin: 0.15rem 0 0; }
 .lang-menu button:hover, .lang-menu button[aria-selected="true"] { background: #e7edda; }
 @media (max-width: 860px) {
   .site-header { flex-wrap: wrap; }
+  /* En celular el inicio descuenta el alto del menú para que el botón quede dentro de la primera pantalla. */
+  .hero { min-height: calc(100dvh - 9rem); }
+  .hero-copy { margin: 12vh 6vw 5vh; }
+  .hero .hero-cta { margin-top: 1.8rem; }
   .site-header nav { margin-left: 0; width: 100%; }
   .post, .post.featured { --pad: 1.2rem; }
   .post.featured { gap: 1.2rem; }
