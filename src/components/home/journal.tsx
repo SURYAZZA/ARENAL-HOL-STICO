@@ -1,25 +1,20 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router';
 import type { BlogPost } from '@/lib/content';
-import { splitJournal } from '@/lib/content';
+import { clampCoverRatio, splitJournal } from '@/lib/content';
 import { formatLongDate, useLang } from '@/lib/i18n';
 
 /**
- * Una publicación del blog. La forma depende de la foto:
- *  - horizontal (o sin foto): título y fecha arriba, foto, texto debajo.
- *  - vertical: foto a un costado y todo el texto al otro.
- * La foto nunca se recorta; solo se ajusta su tamaño.
+ * Una publicación del blog: foto a la izquierda y fecha, título y texto a la derecha.
+ * El ancho de la foto sale de su proporción, hasta un máximo de la mitad de la tarjeta.
  */
 function Card({ post, featured, isNew }: { post: BlogPost; featured?: boolean; isNew?: boolean }) {
   const { t, tx, lang } = useLang();
   const [open, setOpen] = useState(false);
   // Publicaciones antiguas pueden no traer medidas: se leen al cargar la foto.
   const [size, setSize] = useState<[number, number]>([post.cover_w, post.cover_h]);
-  const vertical = Boolean(post.cover) && size[1] > size[0] * 1.02;
-  // La fijada siempre lleva el texto a un costado, sea cual sea la forma de la foto.
-  const sideBySide = vertical || (Boolean(featured) && Boolean(post.cover));
-  // Proporción ancho/alto: la tarjeta se ajusta a ella para que la foto nunca lleve relleno a los lados.
-  const ratio = size[0] && size[1] ? size[0] / size[1] : 1.5;
+  // Proporción ancho/alto de la foto, acotada: una foto fuera de los límites se muestra recortada al centro.
+  const ratio = clampCoverRatio(size[0] && size[1] ? size[0] / size[1] : 1.4);
   const body = tx(post.body).trim();
 
   const head = (
@@ -56,23 +51,15 @@ function Card({ post, featured, isNew }: { post: BlogPost; featured?: boolean; i
     </div>
   );
 
-  const className = ['post', sideBySide ? 'side' : 'stacked', vertical ? 'vertical' : 'horizontal', featured ? 'featured' : '']
-    .filter(Boolean)
-    .join(' ');
-  const style = { '--ratio': ratio.toFixed(4) } as React.CSSProperties;
-  return sideBySide ? (
-    <article className={className} style={style}>
+  // Todas las publicaciones comparten forma: foto a la izquierda, texto a la derecha.
+  const className = ['post', post.cover ? 'side' : '', featured ? 'featured' : ''].filter(Boolean).join(' ');
+  return (
+    <article className={className} style={{ '--ratio': ratio.toFixed(4) } as React.CSSProperties}>
       {media}
       <div className="post-side">
         {head}
         {text}
       </div>
-    </article>
-  ) : (
-    <article className={className} style={style}>
-      {head}
-      {media}
-      {text}
     </article>
   );
 }

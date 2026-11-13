@@ -60,6 +60,15 @@ export type AdminAccount = { id: string; name: string; email: string; owner: boo
 
 export type LogEntry = { id: number; name: string; email: string; action: string; created: string };
 
+/**
+ * Proporción (ancho / alto) que admite la foto de una publicación en el blog.
+ * Entre estos límites la foto se muestra completa. Fuera de ellos hay que recortarla:
+ * el panel abre un editor para elegir qué parte queda.
+ */
+export const COVER_RATIO = { min: 0.62, max: 1.6 } as const;
+
+export const clampCoverRatio = (ratio: number) => Math.min(COVER_RATIO.max, Math.max(COVER_RATIO.min, ratio));
+
 export function splitJournal(posts: BlogPost[]) {
   const published = posts.filter(post => post.published !== false);
   const pinned = published.find(post => post.pinned) ?? null;

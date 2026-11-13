@@ -117,7 +117,7 @@ export function AdminPanel() {
             <label>Título<input name="title" required maxLength={180} defaultValue={editing?.title ?? ''} /></label>
             <label>Extracto (una o dos frases)<input name="excerpt" required maxLength={400} defaultValue={editing?.excerpt ?? ''} /></label>
             <label>Texto<textarea name="body" required rows={6} defaultValue={editing?.body ?? ''} /></label>
-            <ImageField name="cover" label="Foto de la publicación" defaultValue={editing?.cover ?? ''} />
+            <ImageField name="cover" label="Foto de la publicación" fitBlog defaultValue={editing?.cover ?? ''} />
             <label className="check"><input type="checkbox" name="published" defaultChecked={editing ? editing.published : true} /> Visible en el sitio</label>
             <label className="check"><input type="checkbox" name="pinned" defaultChecked={editing?.pinned ?? false} /> Fijar arriba del blog (reemplaza a la fijada actual)</label>
             <div className="row">
