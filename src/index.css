@@ -112,11 +112,10 @@ img { max-width: 100%; display: block; }
 .hero .btn { background: #f4f1e8; color: #2a3320; }
 /* Botón de inicio: contorno rojo borgoña para que destaque sobre el verde de la foto. */
 .hero .hero-cta { border: 2px solid #7d1a2b; color: #7d1a2b; font-weight: 600; letter-spacing: 0.08em; padding-inline: 2.2rem; box-shadow: 0 0 0 1px rgba(244, 241, 232, 0.5); }
-/* El botón va centrado bajo el título y separado de él. El título se limita a un ancho cercano
-   al de sus líneas para que "centrado" coincida con lo que se ve. */
 .hero-copy--bare { width: fit-content; }
 .hero-copy--bare h1 { max-width: 6.4em; margin-bottom: 0; }
-.hero .hero-cta { display: flex; width: fit-content; margin: 2.8rem auto 0; }
+/* El botón arranca en el mismo borde izquierdo que el título; si el texto es más largo crece hacia la derecha. */
+.hero .hero-cta { display: flex; width: fit-content; margin: 2.8rem 0 0; }
 .hero .hero-cta:hover { background: #7d1a2b; color: #f4f1e8; }
 @media (min-width: 861px) {
   /* Pantalla ancha: la foto se agranda y se corre a la izquierda para que el ave quede en ese lado

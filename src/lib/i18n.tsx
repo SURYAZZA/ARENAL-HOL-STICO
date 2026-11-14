@@ -42,7 +42,7 @@ const ui = {
   },
   'hero.title1': { es: 'Vuelve a tu esencia.', en: 'Return to your essence.', fr: 'Reviens à ton essence.' },
   'hero.title2': { es: ' Encuentra tu equilibrio.', en: ' Find your balance.', fr: ' Trouve ton équilibre.' },
-  'hero.cta': { es: 'Descubre', en: 'Discover', fr: 'Découvre' },
+  'hero.cta': { es: 'Descubrir', en: 'Discover', fr: 'Découvrir' },
 
   'journal.eyebrow': { es: 'El diario de Arenal', en: 'The Arenal Journal', fr: "Le journal d'Arenal" },
   'journal.title': {
