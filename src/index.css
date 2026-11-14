@@ -187,6 +187,16 @@ input, textarea, select { font: inherit; padding: 0.75rem 0.8rem; border-radius:
 .services-page li:nth-child(even) img, .plans li:nth-child(even) img { order: 2; }
 .services-page img, .plans img { width: 100%; height: 320px; object-fit: cover; border-radius: 1.6rem; }
 .services-page span { color: #8aa04a; letter-spacing: 0.16em; }
+/* Nombre de cada servicio: se lee como título del bloque. */
+.services-page li h2 { font-size: clamp(1.8rem, 2.8vw, 2.5rem); line-height: 1.1; margin: 0.35rem 0 0.8rem; }
+/* Encabezado de Servicios: patrón de hojas teñido con los verdes de la marca y un velo oscuro,
+   más denso a la izquierda, para que el título y el subtítulo se lean bien. */
+.services-page .page-intro { margin-bottom: 3.5rem; color: #f4f1e8; background:
+  linear-gradient(90deg, rgba(28, 37, 20, 0.9) 0%, rgba(28, 37, 20, 0.72) 55%, rgba(28, 37, 20, 0.5) 100%),
+  #222c19 url('/img/fondo-hojas.webp') center / cover no-repeat; }
+.services-page .page-intro h1 { color: #f7f4ec; }
+.services-page .page-intro .eyebrow { color: #c9d79a; }
+.services-page .page-intro p { color: #e9e6d8; }
 /* Aire entre el texto de cada servicio y su botón. */
 .services-page li .btn { margin-top: 1.3rem; }
 .meta, .quiet, .empty { color: #5c684c; }
