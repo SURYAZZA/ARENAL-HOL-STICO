@@ -34,3 +34,22 @@ export async function sendContactNotice(
 		logger.error('No se pudo enviar el aviso por correo:', error instanceof Error ? error.message : error);
 	}
 }
+
+/** Aviso de una reserva de retiro nueva. Igual que el de contacto: opcional. */
+export async function sendBookingNotice(to: string, booking: { name: string; email: string; summary: string }) {
+	const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SMTP_FROM } = process.env;
+	if (!to || !SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) return;
+	try {
+		const port = Number(SMTP_PORT || 465);
+		const transport = nodemailer.createTransport({ host: SMTP_HOST, port, secure: port === 465, auth: { user: SMTP_USER, pass: SMTP_PASSWORD } });
+		await transport.sendMail({
+			from: SMTP_FROM || SMTP_USER,
+			to,
+			replyTo: booking.email,
+			subject: `Nueva reserva de retiro: ${booking.name}`,
+			text: `${booking.summary}\n\nEl formulario completo está en /admin, pestaña Reservas.`,
+		});
+	} catch (error) {
+		logger.error('No se pudo enviar el aviso de reserva:', error instanceof Error ? error.message : error);
+	}
+}

@@ -237,6 +237,32 @@ export const action = withApi(async ({ request }) => {
 			return json({ ok: true });
 		}
 
+		case 'updateBooking': {
+			const id = text(data.id, 15);
+			const status = text(data.status, 20);
+			if (!['nueva', 'en-proceso', 'confirmada', 'cerrada'].includes(status)) return apiError(400, 'Estado inválido');
+			const booking = await one('SELECT name FROM retreat_bookings WHERE id = ?', id);
+			if (!booking) return apiError(404, 'Esa reserva ya no existe');
+			await run('UPDATE retreat_bookings SET status = ? WHERE id = ?', [status, id]);
+			await record(user, `Marcó la reserva de ${quoted(booking.name)} como ${status}`);
+			return json({ ok: true });
+		}
+
+		case 'deleteBooking': {
+			const id = text(data.id, 15);
+			const booking = await one('SELECT name FROM retreat_bookings WHERE id = ?', id);
+			await run('DELETE FROM retreat_bookings WHERE id = ?', [id]);
+			if (booking) await record(user, `Eliminó la reserva de ${quoted(booking.name)}`);
+			return json({ ok: true });
+		}
+
+		case 'deleteAffiliate': {
+			const email = text(data.email, 190).toLowerCase();
+			await run('DELETE FROM retreat_affiliates WHERE email = ?', [email]);
+			await record(user, `Quitó a ${email} de los afiliados a retiros`);
+			return json({ ok: true });
+		}
+
 		default:
 			return apiError(400, 'Operación desconocida');
 	}

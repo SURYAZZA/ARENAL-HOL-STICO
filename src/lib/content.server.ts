@@ -1,7 +1,7 @@
 import type { RowDataPacket } from 'mysql2/promise';
 import { iso, query } from '@/lib/db.server';
 import logger from '@/lib/logger.server';
-import type { AdminAccount, BlogPost, LogEntry, ContactNote, PageCopy, RetreatPlan, Review } from '@/lib/content';
+import type { AdminAccount, Affiliate, BlogPost, Booking, LogEntry, ContactNote, PageCopy, RetreatPlan, Review } from '@/lib/content';
 
 type Row = RowDataPacket & Record<string, any>;
 
@@ -54,8 +54,17 @@ export const retreatCopy = () =>
 		return rows[0] ? toCopy(rows[0]) : null;
 	});
 
+function parseData(raw: unknown): Record<string, unknown> {
+	try {
+		const value = JSON.parse(String(raw ?? '{}'));
+		return value && typeof value === 'object' ? value : {};
+	} catch {
+		return {};
+	}
+}
+
 export async function adminSnapshot() {
-	const [posts, reviews, plans, copy, notes, settings, admins, log] = await Promise.all([
+	const [posts, reviews, plans, copy, notes, settings, admins, log, bookings, affiliates] = await Promise.all([
 		query<Row>('SELECT * FROM blog_posts ORDER BY published_at DESC'),
 		query<Row>('SELECT * FROM reviews ORDER BY created DESC'),
 		query<Row>('SELECT * FROM retreat_plans ORDER BY sort_order ASC'),
@@ -64,6 +73,8 @@ export async function adminSnapshot() {
 		query<Row>('SELECT * FROM site_settings LIMIT 1'),
 		query<Row>('SELECT id, name, email, created FROM admins ORDER BY created ASC'),
 		query<Row>('SELECT id, actor_name, actor_email, action, created FROM admin_log ORDER BY id DESC LIMIT 500'),
+		query<Row>('SELECT * FROM retreat_bookings ORDER BY created DESC LIMIT 300'),
+		query<Row>('SELECT email, name, created FROM retreat_affiliates ORDER BY created DESC'),
 	]);
 	return {
 		posts: posts.map(toPost),
@@ -72,6 +83,11 @@ export async function adminSnapshot() {
 		copy: copy[0] ? toCopy(copy[0]) : null,
 		notes: notes.map(toNote),
 		notifyEmail: String(settings[0]?.notify_email ?? ''),
+		bookings: bookings.map((r): Booking => ({
+			id: r.id, name: r.name, email: r.email, guests: Number(r.guests), days: Number(r.days), arrival: r.arrival,
+			lang: r.lang, status: r.status, data: parseData(r.data), created: iso(r.created),
+		})),
+		affiliates: affiliates.map((r): Affiliate => ({ email: r.email, name: r.name, created: iso(r.created) })),
 		admins: admins.map((r): AdminAccount => ({ id: r.id, name: r.name, email: r.email, owner: false, created: iso(r.created) })),
 		log: log.map((r): LogEntry => ({ id: Number(r.id), name: r.actor_name, email: r.actor_email, action: r.action, created: iso(r.created) })),
 	};

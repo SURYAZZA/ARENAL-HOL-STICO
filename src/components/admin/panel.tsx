@@ -3,22 +3,45 @@ import { Link } from 'react-router';
 import { adminApi } from '@/lib/admin-api';
 import { useAuth } from '@/hooks/use-auth';
 import { ImageField, measureImage } from '@/components/admin/image-field';
-import type { AdminAccount, BlogPost, ContactNote, LogEntry, PageCopy, RetreatPlan, Review } from '@/lib/content';
+import type { AdminAccount, Affiliate, BlogPost, Booking, ContactNote, LogEntry, Review } from '@/lib/content';
+import { RETREAT_NAME, bookingChoices, bookingLabels, type BookingField, type Choice } from '@/data/retreat';
 
 type Snapshot = {
-  posts: BlogPost[]; reviews: Review[]; plans: RetreatPlan[]; copy: PageCopy | null; notes: ContactNote[];
+  posts: BlogPost[]; reviews: Review[]; notes: ContactNote[]; bookings: Booking[]; affiliates: Affiliate[];
   notifyEmail: string; admins: AdminAccount[]; log: LogEntry[]; me: AdminAccount;
 };
 
 const TABS = [
   ['diario', 'Blog'],
   ['resenas', 'Reseñas'],
-  ['retiros', 'Retiros'],
+  ['retiros', 'Reservas'],
   ['avisos', 'Avisos'],
   ['equipo', 'Equipo'],
   ['historial', 'Historial'],
 ] as const;
 type Tab = (typeof TABS)[number][0];
+
+const STATUS: Record<string, string> = { nueva: 'Nueva', 'en-proceso': 'En proceso', confirmada: 'Confirmada', cerrada: 'Cerrada' };
+
+const FIELD_ORDER: BookingField[] = [
+  'phone', 'country', 'language', 'companions', 'flexible', 'transport', 'focus', 'focusOther', 'activities',
+  'mealPlan', 'diet', 'allergies', 'yogaLevel', 'health', 'petAllergy', 'budget', 'expectations', 'source',
+];
+
+/** Convierte las respuestas guardadas en filas legibles (etiqueta en español + respuesta). */
+function bookingRows(data: Record<string, unknown>): [string, string][] {
+  const choices = bookingChoices as unknown as Record<string, readonly Choice[]>;
+  const label = (field: string, value: string) => choices[field]?.find(option => option.value === value)?.label.es ?? value;
+  const rows: [string, string][] = [];
+  for (const field of FIELD_ORDER) {
+    const raw = data[field];
+    const value = Array.isArray(raw)
+      ? raw.map(item => label(field, String(item))).join(', ')
+      : typeof raw === 'boolean' ? (raw ? 'Sí' : '') : label(field, String(raw ?? ''));
+    if (value) rows.push([bookingLabels[field].es, value]);
+  }
+  return rows;
+}
 
 const when = (iso: string) =>
   iso ? new Date(iso).toLocaleString('es-CR', { dateStyle: 'medium', timeStyle: 'short' }) : '';
@@ -36,6 +59,7 @@ export function AdminPanel() {
   const [formKey, setFormKey] = useState(0);
   const [resetFor, setResetFor] = useState('');
   const [who, setWho] = useState('');
+  const [openBooking, setOpenBooking] = useState('');
 
   async function load() {
     const snapshot = await adminApi<Snapshot>('load');
@@ -87,7 +111,7 @@ export function AdminPanel() {
     return <main className="admin"><p>{message || 'Cargando…'}</p></main>;
   }
 
-  const { posts, reviews, plans, copy, notes, admins, log, me } = data;
+  const { posts, reviews, notes, bookings, affiliates, admins, log, me } = data;
   const people = [...new Set(log.map(entry => entry.name))];
   const shownLog = who ? log.filter(entry => entry.name === who) : log;
 
@@ -167,51 +191,68 @@ export function AdminPanel() {
         </ul>
       ) : null}
 
-      {tab === 'retiros' && copy ? (
+      {tab === 'retiros' ? (
         <section>
-          <form className="stack" onSubmit={event => {
-            event.preventDefault();
-            const form = new FormData(event.currentTarget);
-            void act('saveCopy', {
-              id: copy.id,
-              eyebrow: String(form.get('eyebrow')),
-              title: String(form.get('title')),
-              body: String(form.get('body')),
-              image: String(form.get('image')),
-            }, 'Texto de retiros actualizado.');
-          }}>
-            <input name="eyebrow" defaultValue={copy.eyebrow} />
-            <input name="title" defaultValue={copy.title} />
-            <textarea name="body" defaultValue={copy.body} rows={5} />
-            <ImageField name="image" defaultValue={copy.image} />
-            <button className="btn" type="submit">Guardar presentación</button>
-          </form>
-          {plans.map(plan => (
-            <form key={plan.id} className="stack plan-edit" onSubmit={event => {
-              event.preventDefault();
-              const form = new FormData(event.currentTarget);
-              void act('savePlan', {
-                id: plan.id,
-                title: String(form.get('title')),
-                days: Number(form.get('days')),
-                location: String(form.get('location')),
-                group_size: String(form.get('group_size')),
-                focus: String(form.get('focus')),
-                summary: String(form.get('summary')),
-                image: String(form.get('image')),
-              }, 'Plan actualizado.');
-            }}>
-              <h3>{plan.title}</h3>
-              <input name="title" defaultValue={plan.title} />
-              <input name="days" type="number" min={3} max={10} defaultValue={plan.days} />
-              <input name="location" defaultValue={plan.location} />
-              <input name="group_size" defaultValue={plan.group_size} />
-              <input name="focus" defaultValue={plan.focus} />
-              <textarea name="summary" defaultValue={plan.summary} rows={3} />
-              <ImageField name="image" defaultValue={plan.image} />
-              <button className="btn ghost" type="submit">Guardar plan</button>
-            </form>
-          ))}
+          <h2>Reservas del retiro {RETREAT_NAME}</h2>
+          <ul>
+            {bookings.map(booking => (
+              <li key={booking.id}>
+                <strong>{booking.name}</strong> · {booking.email}
+                <span className="hint"> · {when(booking.created)} · {STATUS[booking.status] ?? booking.status}</span>
+                <p>
+                  {booking.guests} {booking.guests === 1 ? 'persona' : 'personas'} · {booking.days} días · llegada ideal: {booking.arrival || 'sin definir'}
+                </p>
+                <div className="row">
+                  <button type="button" onClick={() => setOpenBooking(openBooking === booking.id ? '' : booking.id)}>
+                    {openBooking === booking.id ? 'Ocultar formulario' : 'Ver formulario completo'}
+                  </button>
+                  <select
+                    aria-label="Estado de la reserva"
+                    value={booking.status}
+                    onChange={event => void act('updateBooking', { id: booking.id, status: event.target.value }, 'Estado actualizado.')}
+                  >
+                    {Object.entries(STATUS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                  </select>
+                  <button type="button" onClick={() => {
+                    if (confirm('¿Eliminar esta reserva? No se puede deshacer.')) void act('deleteBooking', { id: booking.id }, 'Reserva eliminada.');
+                  }}>Eliminar</button>
+                </div>
+                {openBooking === booking.id ? (
+                  <dl className="booking-detail">
+                    {bookingRows(booking.data).map(([label, value]) => (
+                      <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+                    ))}
+                  </dl>
+                ) : null}
+              </li>
+            ))}
+            {bookings.length === 0 ? <li>Aún no hay reservas.</li> : null}
+          </ul>
+
+          <h2>Afiliados a retiros</h2>
+          <p className="hint">Personas que pidieron afiliarse desde el formulario de contacto. Esta lista no se muestra en el sitio.</p>
+          {affiliates.length > 0 ? (
+            <button type="button" className="btn ghost" onClick={() => {
+              void navigator.clipboard.writeText(affiliates.map(person => person.email).join(', ')).then(
+                () => setMessage('Correos copiados.'),
+                () => setMessage('No se pudieron copiar los correos.'),
+              );
+            }}>Copiar todos los correos</button>
+          ) : null}
+          <ul>
+            {affiliates.map(person => (
+              <li key={person.email}>
+                <strong>{person.name || 'Sin nombre'}</strong> · {person.email}
+                <span className="hint"> · {when(person.created)}</span>
+                <div className="row">
+                  <button type="button" onClick={() => {
+                    if (confirm(`¿Quitar a ${person.email} de los afiliados?`)) void act('deleteAffiliate', { email: person.email }, 'Afiliado quitado.');
+                  }}>Quitar</button>
+                </div>
+              </li>
+            ))}
+            {affiliates.length === 0 ? <li>Aún no hay afiliados.</li> : null}
+          </ul>
         </section>
       ) : null}
 

@@ -295,3 +295,115 @@ dd { margin: 0.15rem 0 0; }
   .post-media, .post.featured .post-media { order: 2; flex: 0 0 auto; width: min(100%, calc(22rem * var(--ratio, 1.4))); align-self: center; }
   .post-text { order: 3; }
 }
+
+/* ------------------------------------------------------------------ */
+/* Retiros: portada (réplica de la portada del Master Document)         */
+/* ------------------------------------------------------------------ */
+.retreat-cover { position: relative; min-height: min(88dvh, 56.25vw + 12rem); display: grid; place-items: center; padding: 5rem 6vw; color: #f4f1e8; text-align: center;
+  background: #1c1e12 url('/img/retiro-portada.webp') center / cover no-repeat; overflow: hidden; }
+.rc-corner { position: absolute; margin: 0; font-size: clamp(0.56rem, 0.78vw, 0.72rem); letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.92; }
+.rc-tl { top: 2.2rem; left: 2.6vw; } .rc-tr { top: 2.2rem; right: 2.6vw; }
+.rc-bl { bottom: 2.2rem; left: 2.6vw; } .rc-br { bottom: 2.2rem; right: 2.6vw; }
+.rc-center { display: grid; justify-items: center; gap: clamp(2rem, 5vw, 4.2rem); }
+.rc-center h1 { margin: 0; line-height: 0; }
+.rc-center h1 img { width: min(38vw, 34rem); min-width: 15rem; height: auto; }
+.rc-sub { margin: 0; font-family: Fraunces, Georgia, serif; font-size: clamp(0.6rem, 0.95vw, 0.85rem); letter-spacing: 0.42em; text-transform: uppercase; opacity: 0.9; padding-left: 0.42em; }
+
+/* Retiro único */
+.retreat-one { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 3.5rem; align-items: center; padding: 5.5rem 7vw; max-width: 96rem; margin-inline: auto; }
+.retreat-one > img { width: 100%; max-height: 40rem; object-fit: cover; border-radius: 1.6rem; }
+.retreat-one h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.05; margin: 0 0 1rem; }
+.retreat-one p { line-height: 1.7; margin: 0 0 1rem; max-width: 44rem; }
+.retreat-one .btn { margin-top: 0.8rem; border: 0; cursor: pointer; font: inherit; }
+.retreat-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0 0 1.4rem; }
+.retreat-facts li { padding: 0.35rem 0.9rem; border: 1px solid #c9d0b6; border-radius: 999px; font-size: 0.85rem; color: #4d5840; }
+
+/* ------------------------------------------------------------------ */
+/* Ventana "Profundizar": mismo lenguaje visual que el PDF del overview */
+/* (papel crema, paneles oliva, cintas redondeadas, colinas)            */
+/* ------------------------------------------------------------------ */
+.ov-backdrop { position: fixed; inset: 0; z-index: 100; display: grid; justify-items: center; align-items: start; padding: 3vh 1rem; background: rgba(20, 26, 14, 0.72); overflow-y: auto; overscroll-behavior: contain; }
+.ov-panel { position: relative; width: min(100%, 46rem); background: #e9e5cd url('/img/papel-crema.webp') top center / 100% auto repeat-y; color: #2f3524; border-radius: 1.2rem; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45); outline: none; font-size: 0.98rem; }
+.ov-close { position: sticky; top: 0.8rem; margin: 0.8rem 0.8rem -3.4rem auto; z-index: 3; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 999px; border: 1px solid rgba(244, 241, 232, 0.5); background: rgba(28, 32, 18, 0.72); color: #f4f1e8; cursor: pointer; }
+.ov-cover { display: grid; justify-items: center; gap: 1.2rem; padding: 4.5rem 2rem 4rem; text-align: center; color: #f4f1e8; background: #1c1e12 url('/img/retiro-follaje.webp') center / cover no-repeat; }
+.ov-kicker { margin: 0 0 2.4rem; font-family: Fraunces, Georgia, serif; font-size: 1rem; }
+.ov-symbol { width: 3rem; height: 3rem; }
+.ov-wordmark { width: min(78%, 24rem); height: auto; }
+.ov-tagline { margin: 2rem 0 0; max-width: 22rem; font-family: Fraunces, Georgia, serif; font-size: 1.1rem; line-height: 1.5; }
+.ov-section { padding: 2.8rem clamp(1.3rem, 6vw, 3.4rem); }
+.ov-section + .ov-section { border-top: 1px solid rgba(47, 53, 36, 0.12); }
+.ov-section.olive { background: rgba(150, 149, 59, 0.34) url('/img/papel-oliva.webp') center / cover; background-blend-mode: soft-light; }
+.ov-section h3 { font-family: "Outfit", sans-serif; font-weight: 460; letter-spacing: 0; font-size: 1.7rem; margin: 0 0 1.3rem; }
+.ov-section h4 { font-family: "Outfit", sans-serif; font-weight: 560; letter-spacing: 0; font-size: 1rem; margin: 1.5rem 0 0.5rem; }
+.ov-section p { margin: 0 0 0.9rem; line-height: 1.65; text-align: justify; hyphens: auto; }
+.ov-photo { display: block; width: calc(100% + 2 * clamp(1.3rem, 6vw, 3.4rem)); max-width: none; height: 15rem; object-fit: cover; object-position: center 72%; margin: -2.8rem calc(-1 * clamp(1.3rem, 6vw, 3.4rem)) 2.2rem; }
+.ov-hills { display: block; width: calc(100% + 2 * clamp(1.3rem, 6vw, 3.4rem)); max-width: none; height: 7rem; object-fit: cover; object-position: bottom; margin: 2rem calc(-1 * clamp(1.3rem, 6vw, 3.4rem)) -2.8rem; }
+.ov-list { list-style: disc; margin: 0 0 1rem; padding-left: 1.3rem; display: grid; gap: 0.3rem; line-height: 1.55; }
+.ov-pills { list-style: none; padding: 0; margin: 1.4rem 0; display: grid; gap: 0.7rem; }
+.ov-pills li { padding: 0.7rem 1.2rem; border-radius: 999px; background: rgba(150, 149, 59, 0.22); text-align: center; font-weight: 460; line-height: 1.35; }
+.ov-chips { list-style: none; padding: 0; margin: 0.8rem 0 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ov-chips li { padding: 0.4rem 1rem; border-radius: 0.5rem; background: rgba(150, 149, 59, 0.22); font-size: 0.9rem; }
+.ov-quotes { list-style: none; padding: 0; margin: 1.6rem 0; display: grid; gap: 1.5rem; text-align: center; font-style: italic; font-size: 1.05rem; line-height: 1.5; }
+.ov-section p.ov-option { text-align: left; }
+.ov-section p.ov-note { font-size: 0.84rem; font-style: italic; opacity: 0.85; text-align: left; margin-top: 1.2rem; }
+.ov-days { display: grid; gap: 0.2rem; padding: 0.4rem 1.2rem 0.6rem; background: rgba(244, 241, 232, 0.4); border-radius: 0.8rem; margin: 1rem 0; }
+.ov-steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.3rem; }
+.ov-steps li:nth-child(even) { text-align: right; }
+.ov-steps li:nth-child(even) p { text-align: right; }
+.ov-steps h4 { margin: 0 0 0.3rem; font-size: 1.05rem; }
+.ov-steps p { margin: 0; }
+.ov-contact { display: grid; gap: 0.5rem; }
+.ov-contact a { color: inherit; }
+.ov-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; padding: 2.6rem clamp(1.3rem, 6vw, 3.4rem) 3rem; background: #26301d; color: #e9e6d8; }
+.ov-actions div { display: grid; gap: 0.8rem; align-content: start; justify-items: center; text-align: center; }
+.ov-actions p { margin: 0; font-size: 0.86rem; line-height: 1.5; }
+.ov-actions .btn { width: 100%; justify-content: center; text-align: center; }
+.ov-affiliate { background: #f4f1e8; color: #2a3320; }
+.ov-affiliate:hover { background: #ffffff; }
+.ov-book { background: #7d1a2b; color: #f4f1e8; }
+.ov-book:hover { background: #651322; }
+
+/* ------------------------------------------------------------------ */
+/* Formulario de reserva                                                */
+/* ------------------------------------------------------------------ */
+.booking-page { background: #f4f1e8; padding: 4rem 7vw 6rem; }
+.bk-head, .bk-form, .bk-done { max-width: 54rem; margin-inline: auto; }
+.bk-head h1, .bk-done h1 { font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; margin: 0 0 1rem; }
+.bk-head p { max-width: 40rem; line-height: 1.65; }
+.bk-back { display: inline-block; margin-bottom: 1.6rem; color: #617e20; font-size: 0.9rem; }
+.bk-form { display: grid; gap: 1.6rem; margin-top: 2.4rem; }
+.bk-form fieldset { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.4rem; margin: 0; padding: 1.6rem; border: 1px solid #d6dcc4; border-radius: 1.4rem; background: #f9f7f0; min-width: 0; }
+.bk-form legend { padding: 0 0.6rem; font-family: Fraunces, Georgia, serif; font-size: 1.35rem; color: #2a3320; }
+.bk-form label, .bk-label { display: grid; gap: 0.4rem; font-size: 0.92rem; color: #3b4530; margin: 0; align-content: start; }
+.bk-form input:not([type='checkbox']), .bk-form select, .bk-form textarea { width: 100%; box-sizing: border-box; padding: 0.7rem 0.9rem; border: 1px solid #c3cbae; border-radius: 0.8rem; background: #ffffff; font: inherit; color: #2a3320; }
+.bk-form input:focus-visible, .bk-form select:focus-visible, .bk-form textarea:focus-visible { outline: 2px solid #617e20; outline-offset: 1px; }
+.bk-wide { grid-column: 1 / -1; }
+.bk-checks { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.5rem 1rem; margin-top: 0.5rem; }
+.bk-form label.bk-check { display: flex; align-items: flex-start; gap: 0.55rem; line-height: 1.4; }
+.bk-check input { width: 1.05rem; height: 1.05rem; margin-top: 0.15rem; accent-color: #617e20; flex: none; }
+.bk-hint { margin: 0.3rem 0 0; font-size: 0.82rem; color: #5c684c; }
+.bk-form > .btn { justify-self: start; border: 0; cursor: pointer; font: inherit; padding-inline: 2.2rem; }
+.bk-form > .btn:disabled { opacity: 0.6; cursor: progress; }
+.bk-done { text-align: center; padding: 6rem 0; display: grid; gap: 1rem; justify-items: center; }
+.bk-done p { font-size: 1.15rem; max-width: 34rem; }
+.booking-detail { margin: 0.8rem 0 0; display: grid; gap: 0.5rem; padding: 1rem; background: #f4f1e8; border-radius: 0.8rem; }
+.booking-detail div { display: grid; grid-template-columns: minmax(10rem, 0.8fr) 1.2fr; gap: 0.8rem; }
+.booking-detail dt { color: #5c684c; font-size: 0.86rem; }
+.booking-detail dd { margin: 0; white-space: pre-line; overflow-wrap: anywhere; }
+
+@media (max-width: 860px) {
+  .retreat-cover { min-height: 78dvh; }
+  .rc-corner { font-size: 0.5rem; }
+  .rc-tl, .rc-tr { top: 1.3rem; } .rc-bl, .rc-br { bottom: 1.3rem; }
+  .rc-center h1 img { width: 74vw; }
+  .rc-sub { letter-spacing: 0.28em; font-size: 0.56rem; }
+  .retreat-one { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 6vw; }
+  .retreat-one > img { max-height: 22rem; }
+  .ov-backdrop { padding: 0; }
+  .ov-panel { border-radius: 0; min-height: 100dvh; }
+  .ov-actions { grid-template-columns: 1fr; }
+  .ov-section p { text-align: left; }
+  .bk-form fieldset { grid-template-columns: 1fr; padding: 1.2rem; }
+  .booking-page { padding: 2.5rem 5vw 4rem; }
+  .booking-detail div { grid-template-columns: 1fr; gap: 0.1rem; }
+}

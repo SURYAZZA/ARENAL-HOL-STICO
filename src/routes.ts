@@ -4,6 +4,7 @@ export default [
 	index('routes/home.tsx'),
 	route('servicios', 'routes/servicios.tsx'),
 	route('retiros', 'routes/retiros.tsx'),
+	route('retiros/reserva', 'routes/retiros.reserva.tsx'),
 	route('entrar', 'routes/entrar.tsx'),
 	route('admin', 'routes/admin.tsx'),
 	route('sitemap.xml', 'routes/sitemap.xml.ts'),
@@ -12,6 +13,7 @@ export default [
 	route('api/health', 'routes/api.health.ts'),
 	route('api/reviews', 'routes/api.reviews.ts'),
 	route('api/contact', 'routes/api.contact.ts'),
+	route('api/booking', 'routes/api.booking.ts'),
 	route('api/admin', 'routes/api.admin.ts'),
 	route('api/*', 'routes/api.$.ts'),
 ] satisfies RouteConfig;

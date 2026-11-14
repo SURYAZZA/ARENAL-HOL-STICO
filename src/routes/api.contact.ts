@@ -24,6 +24,14 @@ export const action = withApi(async ({ request }) => {
 		newId(), contact.name, contact.email, contact.organization, contact.interest, contact.message,
 	]);
 
+	// Quien pide afiliarse a Retiros queda en una lista aparte (no visible en el sitio),
+	// para poder escribirle más adelante sobre retiros y eventos.
+	if (contact.interest === 'afiliado') {
+		await run('INSERT INTO retreat_affiliates (email, name, created) VALUES (?,?,?) ON DUPLICATE KEY UPDATE name = VALUES(name)', [
+			contact.email.toLowerCase(), contact.name, new Date(),
+		]);
+	}
+
 	const settings = await query<any>('SELECT notify_email FROM site_settings LIMIT 1');
 	void sendContactNotice(String(settings[0]?.notify_email ?? ''), contact);
 

@@ -56,6 +56,13 @@ export type ContactNote = {
   created: string;
 };
 
+export type Booking = {
+  id: string; name: string; email: string; guests: number; days: number; arrival: string;
+  lang: string; status: string; data: Record<string, unknown>; created: string;
+};
+
+export type Affiliate = { email: string; name: string; created: string };
+
 export type AdminAccount = { id: string; name: string; email: string; owner: boolean; created?: string };
 
 export type LogEntry = { id: number; name: string; email: string; action: string; created: string };
