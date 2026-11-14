@@ -187,6 +187,8 @@ input, textarea, select { font: inherit; padding: 0.75rem 0.8rem; border-radius:
 .services-page li:nth-child(even) img, .plans li:nth-child(even) img { order: 2; }
 .services-page img, .plans img { width: 100%; height: 320px; object-fit: cover; border-radius: 1.6rem; }
 .services-page span { color: #8aa04a; letter-spacing: 0.16em; }
+/* Aire entre el texto de cada servicio y su botón. */
+.services-page li .btn { margin-top: 1.3rem; }
 .meta, .quiet, .empty { color: #5c684c; }
 .retreat-hero { position: relative; min-height: 88dvh; display: grid; align-items: end; color: #f7f4ec; }
 .retreat-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }

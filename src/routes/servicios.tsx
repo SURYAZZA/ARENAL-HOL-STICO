@@ -8,7 +8,7 @@ export function meta({ matches, location }: Route.MetaArgs) {
   return seo({ matches, location }, {
     title: 'Servicios · Arenal Holístico',
     description:
-      'Yoga, meditaciones, sonoterapias, cacao, baños de bosque y talleres para hoteles, agencias y organizadores de experiencias.',
+      'Yoga, meditaciones, sonoterapias, cacao, baños de bosque y talleres para organizaciones, equipos y sus clientes.',
     image: OG_IMAGE,
     jsonLd: {
       '@context': 'https://schema.org',

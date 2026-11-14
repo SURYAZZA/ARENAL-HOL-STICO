@@ -168,14 +168,14 @@ const ui = {
 
   'services.eyebrow': { es: 'Para quien organiza', en: 'For those who organize', fr: 'Pour celles et ceux qui organisent' },
   'services.title': {
-    es: 'Bienestar que transforma tu propuesta.',
-    en: 'Wellbeing that transforms your offer.',
-    fr: 'Un bien-être qui transforme ta proposition.',
+    es: 'El siguiente paso en el camino',
+    en: 'The next step on the journey',
+    fr: 'La prochaine étape du chemin',
   },
   'services.intro': {
-    es: 'Hoteles, agencias de viajes y equipos que arman experiencias con propósito. Cada servicio se adapta a tu operación; el de retiros abre su propia página.',
-    en: 'Hotels, travel agencies and teams that build experiences with purpose. Each service adapts to your operation; the retreats one opens its own page.',
-    fr: "Hôtels, agences de voyages et équipes qui conçoivent des expériences porteuses de sens. Chaque service s'adapte à ton activité ; celui des retraites ouvre sa propre page.",
+    es: 'Transforma tu propuesta y descubre las diversas disciplinas sanadoras que ofrecemos para ti y para tus clientes.',
+    en: 'Transform your offering and discover the range of healing disciplines we offer for you and your clients.',
+    fr: 'Transforme ta proposition et découvre les différentes disciplines de guérison que nous proposons pour toi et pour tes clients.',
   },
   'services.seeRetreats': { es: 'Ver retiros', en: 'See retreats', fr: 'Voir les retraites' },
   'services.inquire': { es: 'Consultar', en: 'Inquire about', fr: 'Demander des informations :' },
@@ -271,59 +271,59 @@ type ServiceCopy = { name: Entry; summary: Entry };
 
 export const serviceCopy: Record<string, ServiceCopy> = {
   yoga: {
-    name: { es: 'Clases de Yoga', en: 'Yoga Classes', fr: 'Cours de yoga' },
+    name: { es: "Clases de Yoga", en: "Yoga Classes", fr: "Cours de yoga" },
     summary: {
-      es: 'Práctica consciente de Yoga para la carta, prácticas matutinas y diurnas, con enfoque en la reconexión con el cuerpo. Movimiento suave, horario fijo y un cierre que deja al huésped listo para el día.\n\nEl yoga no es solo un deporte y lejos de ser competitivo, busca traer tranquilidad y equilibrio entre el cuerpo y la mente, puede combinarse con meditaciones, sonoterapias y demás. Puede ofrecerse en privado y grupal.',
-      en: 'Mindful Yoga practice for the menu of services, with morning and daytime sessions focused on reconnecting with the body. Gentle movement, a fixed schedule and a closing that leaves the guest ready for the day.\n\nYoga is not just a sport and, far from being competitive, it seeks to bring calm and balance between body and mind; it can be combined with meditations, sound therapies and more. It can be offered privately or in groups.',
-      fr: "Pratique consciente du yoga pour la carte de services, avec des séances matinales et diurnes centrées sur la reconnexion avec le corps. Mouvement doux, horaire fixe et une clôture qui laisse l'hôte prêt pour la journée.\n\nLe yoga n'est pas seulement un sport et, loin d'être compétitif, il cherche à apporter calme et équilibre entre le corps et l'esprit ; il peut se combiner avec des méditations, des sonothérapies et plus encore. Il peut être proposé en privé ou en groupe.",
+      es: "Práctica consciente de yoga para tu carta de servicios, en sesiones matutinas y diurnas, con enfoque en la reconexión con el cuerpo. Movimiento suave, horario fijo y un cierre que deja a tus clientes listos para el día.\n\nEl yoga no es solo un deporte. Lejos de ser competitivo, busca traer tranquilidad y equilibrio entre el cuerpo y la mente. Puede combinarse con meditaciones, sonoterapias y otras disciplinas, y ofrecerse en formato privado o grupal.",
+      en: "Mindful yoga practice for your menu of services, in morning and daytime sessions focused on reconnecting with the body. Gentle movement, a fixed schedule and a closing that leaves your clients ready for the day.\n\nYoga is not just a sport. Far from being competitive, it seeks to bring calm and balance between body and mind. It can be combined with meditations, sound therapies and other disciplines, and offered privately or in groups.",
+      fr: "Pratique consciente du yoga pour ta carte de services, en séances matinales et diurnes centrées sur la reconnexion avec le corps. Mouvement doux, horaire fixe et une clôture qui laisse tes clients prêts pour la journée.\n\nLe yoga n'est pas seulement un sport. Loin d'être compétitif, il cherche à apporter calme et équilibre entre le corps et l'esprit. Il peut se combiner avec des méditations, des sonothérapies et d'autres disciplines, et être proposé en privé ou en groupe.",
     },
   },
   meditacion: {
-    name: { es: 'Meditaciones', en: 'Meditations', fr: 'Méditations' },
+    name: { es: "Meditaciones", en: "Meditations", fr: "Méditations" },
     summary: {
-      es: 'Pausas guiadas sin mística forzada. Claridad, presencia y un silencio que se sostiene aunque el grupo sea nuevo.\nUna guía seria que busca traer a las personas a un espacio de silencio y paz real, lejos del estrés y las responsabilidades del mundo real, un verdadero descanso de la mente.',
-      en: 'Guided pauses without forced mysticism. Clarity, presence and a silence that holds even when the group is new.\nA serious guide that seeks to bring people into a space of real silence and peace, far from the stress and responsibilities of the real world, a true rest for the mind.',
-      fr: "Des pauses guidées sans mystique forcée. Clarté, présence et un silence qui se maintient même quand le groupe est nouveau.\nUn accompagnement sérieux qui cherche à conduire les personnes vers un espace de silence et de paix réels, loin du stress et des responsabilités du monde réel, un véritable repos de l'esprit.",
+      es: "Pausas guiadas sin mística forzada. Claridad, presencia y un silencio que se sostiene aunque el grupo sea nuevo.\n\nUna guía seria que lleva a las personas a un espacio de silencio y paz real, lejos del estrés y de las responsabilidades diarias: un verdadero descanso para la mente.",
+      en: "Guided pauses without forced mysticism. Clarity, presence and a silence that holds even when the group is new.\n\nSerious guidance that brings people into a space of real silence and peace, far from stress and daily responsibilities: a true rest for the mind.",
+      fr: "Des pauses guidées sans mystique forcée. Clarté, présence et un silence qui se maintient même quand le groupe est nouveau.\n\nUn accompagnement sérieux qui conduit les personnes vers un espace de silence et de paix réels, loin du stress et des responsabilités quotidiennes : un véritable repos pour l'esprit.",
     },
   },
   sono: {
-    name: { es: 'Sono Terapias', en: 'Sound Therapies', fr: 'Sonothérapies' },
+    name: { es: "Sonoterapias", en: "Sound Therapies", fr: "Sonothérapies" },
     summary: {
-      es: 'Una meditación ancestral, que más allá de encontrar la relajación por medio del silencio, la busca por medio del sonido, utilizando las vibraciones de cuencos tibetanos, gongs, palos de lluvia y otros instrumentos para llevar la frecuencia de tu cuerpo a un estado de completa relajación.',
-      en: "An ancestral meditation that, beyond seeking relaxation through silence, seeks it through sound, using the vibrations of Tibetan bowls, gongs, rain sticks and other instruments to bring your body's frequency to a state of complete relaxation.",
-      fr: "Une méditation ancestrale qui, au-delà de chercher la détente par le silence, la cherche par le son, en utilisant les vibrations de bols tibétains, de gongs, de bâtons de pluie et d'autres instruments pour amener la fréquence de ton corps à un état de relaxation complète.",
+      es: "Una meditación ancestral que, más allá de buscar la relajación por medio del silencio, la encuentra por medio del sonido. Utiliza las vibraciones de cuencos tibetanos, gongs, palos de lluvia y otros instrumentos para llevar la frecuencia de tu cuerpo a un estado de completa relajación.",
+      en: "An ancestral meditation that, beyond seeking relaxation through silence, finds it through sound. It uses the vibrations of Tibetan bowls, gongs, rain sticks and other instruments to bring your body's frequency to a state of complete relaxation.",
+      fr: "Une méditation ancestrale qui, au-delà de chercher la détente par le silence, la trouve par le son. Elle utilise les vibrations de bols tibétains, de gongs, de bâtons de pluie et d'autres instruments pour amener la fréquence de ton corps à un état de relaxation complète.",
     },
   },
   cacao: {
-    name: { es: 'Ceremonias de Cacao', en: 'Cacao Ceremonies', fr: 'Cérémonies de cacao' },
+    name: { es: "Ceremonias de Cacao", en: "Cacao Ceremonies", fr: "Cérémonies de cacao" },
     summary: {
-      es: 'Un ritual de conexión para inauguraciones, llegadas y círculos de equipo. Breve, cuidado y fácil de explicar a huéspedes que buscan significado, no espectáculo.\n\nEl objetivo es llevarlos atravéz del tiempo a una ceremonia ancestral, a un momento dónde los Mayas utilizaban el cacao como un medio para conectar con lo sagrado y profundizar en la introspección y sanación emocional.',
-      en: 'A connection ritual for openings, arrivals and team circles. Brief, carefully crafted and easy to explain to guests who seek meaning, not spectacle.\n\nThe goal is to take them through time to an ancestral ceremony, to a moment when the Maya used cacao as a means to connect with the sacred and deepen introspection and emotional healing.',
-      fr: "Un rituel de connexion pour les inaugurations, les arrivées et les cercles d'équipe. Bref, soigné et facile à expliquer à des hôtes qui cherchent du sens, pas du spectacle.\n\nL'objectif est de les emmener à travers le temps vers une cérémonie ancestrale, à un moment où les Mayas utilisaient le cacao comme moyen de se connecter au sacré et d'approfondir l'introspection et la guérison émotionnelle.",
+      es: "Un ritual de conexión para inauguraciones, bienvenidas y círculos de equipo. Breve, cuidado y fácil de explicar a clientes que buscan significado, no espectáculo.\n\nEl objetivo es llevarlos a través del tiempo hasta una ceremonia ancestral, a un momento en el que los mayas utilizaban el cacao como medio para conectar con lo sagrado y profundizar en la introspección y la sanación emocional.",
+      en: "A connection ritual for openings, welcomes and team circles. Brief, carefully crafted and easy to explain to clients who seek meaning, not spectacle.\n\nThe goal is to take them back through time to an ancestral ceremony, to a moment when the Maya used cacao as a means to connect with the sacred and deepen introspection and emotional healing.",
+      fr: "Un rituel de connexion pour les inaugurations, les accueils et les cercles d'équipe. Bref, soigné et facile à expliquer à des clients qui cherchent du sens, pas du spectacle.\n\nL'objectif est de les emmener à travers le temps jusqu'à une cérémonie ancestrale, à un moment où les Mayas utilisaient le cacao comme moyen de se connecter au sacré et d'approfondir l'introspection et la guérison émotionnelle.",
     },
   },
   bosque: {
-    name: { es: 'Baños de bosque', en: 'Forest Baths', fr: 'Bains de forêt' },
+    name: { es: "Baños de bosque", en: "Forest Baths", fr: "Bains de forêt" },
     summary: {
-      es: 'Inmersión lenta entre árboles y niebla. La experiencia que diferencia un lodge de Arenal: el bienestar sale de la sala y entra al sendero.\n\nUn espacio para respirar el aire fresco, sentir tu piel en contacto con la tierra, la madera y el viento, para sentir nuevamente esa conexión con lo natural y lo auténtico que tanto cuesta encontrar hoy en día.',
-      en: 'Slow immersion among trees and mist. The experience that sets an Arenal lodge apart: wellbeing leaves the room and enters the trail.\n\nA space to breathe fresh air, feel your skin in contact with the earth, the wood and the wind, to feel once again that connection with the natural and the authentic that is so hard to find these days.',
-      fr: "Immersion lente parmi les arbres et la brume. L'expérience qui distingue un lodge d'Arenal : le bien-être quitte la salle et s'engage sur le sentier.\n\nUn espace pour respirer l'air frais, sentir ta peau en contact avec la terre, le bois et le vent, pour retrouver ce lien avec le naturel et l'authentique, si difficile à trouver aujourd'hui.",
+      es: "Inmersión lenta entre árboles y niebla. La experiencia que distingue una propuesta en Arenal: el bienestar sale de la sala y entra al sendero.\n\nUn espacio para respirar aire fresco y sentir la piel en contacto con la tierra, la madera y el viento; para recuperar esa conexión con lo natural y lo auténtico que tanto cuesta encontrar hoy en día.",
+      en: "Slow immersion among trees and mist. The experience that sets an offering in Arenal apart: wellbeing leaves the room and enters the trail.\n\nA space to breathe fresh air and feel your skin in contact with the earth, the wood and the wind; to recover that connection with the natural and the authentic that is so hard to find these days.",
+      fr: "Immersion lente parmi les arbres et la brume. L'expérience qui distingue une proposition à Arenal : le bien-être quitte la salle et s'engage sur le sentier.\n\nUn espace pour respirer l'air frais et sentir ta peau en contact avec la terre, le bois et le vent ; pour retrouver ce lien avec le naturel et l'authentique, si difficile à trouver aujourd'hui.",
     },
   },
   talleres: {
-    name: { es: 'Talleres', en: 'Workshops', fr: 'Ateliers' },
+    name: { es: "Talleres", en: "Workshops", fr: "Ateliers" },
     summary: {
-      es: 'Encuentros participativos de autocuidado y salud emocional para equipos, agencias y staff de hotel. Contenido claro, duración acordada, sin jerga vacía.\n\nAlejado de promesas vacías, soluciones mágicas o sanaciones, estos talleres buscan traer a las personas nuevos métodos y puntos de vista, para mejorar su desempeño tanto en el ámbito vocacional, como en el personal y el social, basado en la bioenergética y la neurociencia.',
-      en: 'Participatory sessions on self-care and emotional health for teams, agencies and hotel staff. Clear content, agreed duration, no empty jargon.\n\nFar from empty promises, magic solutions or healings, these workshops seek to bring people new methods and points of view to improve their performance in the vocational, personal and social spheres, based on bioenergetics and neuroscience.',
-      fr: "Rencontres participatives d'auto-soin et de santé émotionnelle pour les équipes, les agences et le personnel hôtelier. Contenu clair, durée convenue, sans jargon creux.\n\nÀ l'écart des promesses vides, des solutions magiques ou des guérisons, ces ateliers cherchent à apporter aux personnes de nouvelles méthodes et de nouveaux points de vue pour améliorer leur performance dans les sphères professionnelle, personnelle et sociale, sur la base de la bioénergétique et des neurosciences.",
+      es: "Encuentros participativos de autocuidado y salud emocional para equipos y organizaciones. Contenido claro, duración acordada y sin jerga vacía.\n\nLejos de promesas vacías, soluciones mágicas o sanaciones, estos talleres acercan a las personas nuevos métodos y puntos de vista para mejorar su desempeño en los ámbitos profesional, personal y social, con base en la bioenergética y la neurociencia.",
+      en: "Participatory sessions on self-care and emotional health for teams and organizations. Clear content, agreed duration and no empty jargon.\n\nFar from empty promises, magic solutions or healings, these workshops bring people new methods and points of view to improve their performance in the professional, personal and social spheres, based on bioenergetics and neuroscience.",
+      fr: "Rencontres participatives d'auto-soin et de santé émotionnelle pour les équipes et les organisations. Contenu clair, durée convenue et sans jargon creux.\n\nLoin des promesses vides, des solutions magiques ou des guérisons, ces ateliers apportent aux personnes de nouvelles méthodes et de nouveaux points de vue pour améliorer leur performance dans les sphères professionnelle, personnelle et sociale, sur la base de la bioénergétique et des neurosciences.",
     },
   },
   retiros: {
-    name: { es: 'Retiros', en: 'Retreats', fr: 'Retraites' },
+    name: { es: "Retiros", en: "Retreats", fr: "Retraites" },
     summary: {
-      es: 'Estancias de 3 a 10 días que unen varios de estos servicios en un solo viaje. Para quién organiza y para los viajeros sin rutina, un camino guiado por el estilo de vida holístico para entender su verdadero significado y el propósito que tiene en tu vida, para quienes buscan más que solo una experiencia un verdadero aprendizaje.',
-      en: 'Stays of 3 to 10 days that bring several of these services together in a single trip. For those who organize and for travelers without routine, a path guided by the holistic lifestyle to understand its true meaning and the purpose it holds in your life, for those who seek more than just an experience: real learning.',
-      fr: "Séjours de 3 à 10 jours qui réunissent plusieurs de ces services en un seul voyage. Pour celles et ceux qui organisent et pour les voyageurs sans routine, un chemin guidé par le mode de vie holistique pour comprendre sa véritable signification et le sens qu'il a dans ta vie, pour ceux qui cherchent plus qu'une simple expérience : un véritable apprentissage.",
+      es: "Estancias de 3 a 10 días que unen varios de estos servicios en un solo viaje. Para quien organiza y para quienes viajan sin rutina: un camino guiado por el estilo de vida holístico para entender su verdadero significado y el propósito que tiene en tu vida. Para quienes buscan, más que una experiencia, un verdadero aprendizaje.",
+      en: "Stays of 3 to 10 days that bring several of these services together in a single trip. For those who organize and for those who travel without routine: a path guided by the holistic lifestyle to understand its true meaning and the purpose it holds in your life. For those who seek, more than an experience, real learning.",
+      fr: "Séjours de 3 à 10 jours qui réunissent plusieurs de ces services en un seul voyage. Pour celles et ceux qui organisent et pour celles et ceux qui voyagent sans routine : un chemin guidé par le mode de vie holistique pour comprendre sa véritable signification et le sens qu'il a dans ta vie. Pour celles et ceux qui cherchent, plus qu'une expérience, un véritable apprentissage.",
     },
   },
 };
