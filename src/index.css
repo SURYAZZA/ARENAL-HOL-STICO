@@ -338,7 +338,8 @@ dd { margin: 0.15rem 0 0; }
 .ov-section h4 { font-family: "Outfit", sans-serif; font-weight: 560; letter-spacing: 0; font-size: 1rem; margin: 1.5rem 0 0.5rem; }
 .ov-section p { margin: 0 0 0.9rem; line-height: 1.65; text-align: justify; hyphens: auto; }
 .ov-photo { display: block; width: calc(100% + 2 * clamp(1.3rem, 6vw, 3.4rem)); max-width: none; height: 15rem; object-fit: cover; object-position: center 72%; margin: -2.8rem calc(-1 * clamp(1.3rem, 6vw, 3.4rem)) 2.2rem; }
-.ov-hills { display: block; width: calc(100% + 2 * clamp(1.3rem, 6vw, 3.4rem)); max-width: none; height: 7rem; object-fit: cover; object-position: bottom; margin: 2rem calc(-1 * clamp(1.3rem, 6vw, 3.4rem)) -2.8rem; }
+/* Banda de foto al pie de algunas páginas (recortes de las fotos del Master Document). */
+.ov-band { display: block; width: calc(100% + 2 * clamp(1.3rem, 6vw, 3.4rem)); max-width: none; height: auto; aspect-ratio: 1472 / 416; object-fit: cover; margin: 2rem calc(-1 * clamp(1.3rem, 6vw, 3.4rem)) -2.8rem; }
 .ov-list { list-style: disc; margin: 0 0 1rem; padding-left: 1.3rem; display: grid; gap: 0.3rem; line-height: 1.55; }
 .ov-pills { list-style: none; padding: 0; margin: 1.4rem 0; display: grid; gap: 0.7rem; }
 .ov-pills li { padding: 0.7rem 1.2rem; border-radius: 999px; background: rgba(150, 149, 59, 0.22); text-align: center; font-weight: 460; line-height: 1.35; }

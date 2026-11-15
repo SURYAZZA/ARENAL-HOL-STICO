@@ -102,7 +102,7 @@ export function OverviewDialog({ onClose }: { onClose: () => void }) {
             {section.image ? <img className="ov-photo" src={section.image} alt="" loading="lazy" /> : null}
             <h3>{section.title[lang]}</h3>
             {section.blocks.map((block, index) => <BlockView key={index} block={block} />)}
-            {section.hills ? <img className="ov-hills" src="/img/retiro-colinas.webp" alt="" loading="lazy" /> : null}
+            {section.band ? <img className="ov-band" src={section.band} alt="" loading="lazy" width={1472} height={416} /> : null}
           </section>
         ))}
 

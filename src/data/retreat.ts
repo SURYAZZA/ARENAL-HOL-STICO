@@ -86,7 +86,7 @@ export type Block =
   | { kind: 'steps'; steps: { title: L; text: L }[] }
   | { kind: 'contact' };
 
-export type Section = { id: string; title: L; tone: 'paper' | 'olive'; image?: string; hills?: boolean; blocks: Block[] };
+export type Section = { id: string; title: L; tone: 'paper' | 'olive'; image?: string; band?: string; blocks: Block[] };
 
 export const overview: Section[] = [
   {
@@ -243,7 +243,7 @@ export const overview: Section[] = [
     id: 'personalizacion',
     title: l('Personalización', 'Personalization', 'Personnalisation'),
     tone: 'paper',
-    hills: true,
+    band: '/img/retiro-banda-bosque.webp',
     blocks: [
       { kind: 'p', text: l(
         'Tu retiro está diseñado para honrar tu ritmo y tus preferencias. Desde las caminatas hasta las sesiones de bienestar y las comidas, cada elemento puede personalizarse para acompañar cómo te sientes cada día. Puedes elegir entre las siguientes opciones:',
@@ -331,7 +331,7 @@ export const overview: Section[] = [
     id: 'alojamiento',
     title: l('Alojamiento', 'Accommodation', 'Hébergement'),
     tone: 'paper',
-    hills: true,
+    band: '/img/retiro-banda-niebla.webp',
     blocks: [
       { kind: 'p', text: l(
         'Casa Oropéndola es un hogar y espacio de retiro pequeño e intencional, basado en la sencillez, el cuidado y la conexión con la naturaleza. Ubicada en el tranquilo entorno rural de Jaúuri, a solo 10 minutos de La Fortuna, se siente escondida en el bosque y a la vez cerca de todo lo que puedas necesitar.',
@@ -395,7 +395,7 @@ export const overview: Section[] = [
     id: 'no-incluye',
     title: l('Qué no incluye', 'What’s Not Included', 'Ce qui n’est pas inclus'),
     tone: 'paper',
-    hills: true,
+    band: '/img/retiro-banda-cascada.webp',
     blocks: [
       { kind: 'list', items: [
         l('Vuelos o viajes internacionales', 'Flights or international travel', 'Vols ou voyages internationaux'),
@@ -472,7 +472,7 @@ export const overview: Section[] = [
     id: 'reserva',
     title: l('Cómo reservar tu retiro', 'Booking Your Retreat', 'Réserver ta retraite'),
     tone: 'paper',
-    hills: true,
+    band: '/img/retiro-banda-yoga.webp',
     blocks: [
       { kind: 'steps', steps: [
         { title: l('Comparte tus fechas ideales', 'Share Your Ideal Dates', 'Partage tes dates idéales'), text: l('Cuéntanos cuándo te gustaría venir.', 'Let us know when you are hoping to come.', 'Dis-nous quand tu aimerais venir.') },
