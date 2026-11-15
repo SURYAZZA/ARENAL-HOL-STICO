@@ -149,9 +149,9 @@ export const overview: Section[] = [
         'Spirituelle, détox, thérapeutique, ou celle qui accompagne le mieux ton moment.',
       ) },
       { kind: 'option', title: l('Transporte', 'Transport', 'Transport'), text: l(
-        'El traslado desde el aeropuerto es opcional y se agrega a petición.',
-        'Airport transfer is optional and added on request.',
-        'Le transfert depuis l’aéroport est optionnel et s’ajoute sur demande.',
+        'El transporte dentro de La Fortuna siempre está incluido. El traslado desde el aeropuerto es opcional, en función de tu presupuesto.',
+        'Transportation around La Fortuna is always included. The airport transfer is optional, depending on your budget.',
+        'Le transport dans La Fortuna est toujours inclus. Le transfert depuis l’aéroport est optionnel, selon ton budget.',
       ) },
       { kind: 'p', text: l(
         'Una vez completada tu selección, creamos el itinerario final y el precio se ajusta a lo que elegiste. Por eso el retiro también puede adaptarse a presupuestos ajustados, con una selección más modesta de servicios.',
@@ -178,7 +178,8 @@ export const overview: Section[] = [
         l('Visita a aguas termales naturales', 'Visit to natural hot springs', 'Visite de sources chaudes naturelles'),
         l('Sesión de sonoterapia', 'Sonotherapy (sound therapy) session', 'Séance de sonothérapie'),
         l('Espacios de reflexión de apertura y de cierre', 'Opening and closing reflection spaces', 'Espaces de réflexion d’ouverture et de clôture'),
-        l('Transporte terrestre desde y hacia el aeropuerto SJO y dentro de La Fortuna (opcional)', 'Ground transportation to and from SJO Airport and around La Fortuna (optional)', 'Transport terrestre depuis et vers l’aéroport SJO et dans La Fortuna (optionnel)'),
+        l('Transporte dentro de La Fortuna (siempre incluido)', 'Transportation around La Fortuna (always included)', 'Transport dans La Fortuna (toujours inclus)'),
+        l('Traslado desde y hacia el aeropuerto SJO (opcional, según tu presupuesto)', 'Transfer to and from SJO Airport (optional, depending on your budget)', 'Transfert depuis et vers l’aéroport SJO (optionnel, selon ton budget)'),
         l('Planificación previa a tu llegada y un ritmo diario personalizado', 'Pre-arrival planning and a personalized daily rhythm', 'Préparation avant ton arrivée et un rythme quotidien personnalisé'),
       ] },
       { kind: 'p', text: l(
@@ -333,9 +334,9 @@ export const overview: Section[] = [
     hills: true,
     blocks: [
       { kind: 'p', text: l(
-        'Casa Oropéndola es un hogar y espacio de retiro pequeño e intencional, basado en la sencillez, el cuidado y la conexión con la naturaleza. Ubicada en el tranquilo entorno rural de Jauuri, a solo 10 minutos de La Fortuna, se siente escondida en el bosque y a la vez cerca de todo lo que puedas necesitar.',
-        'Casa Oropéndola is a small, intentional home and retreat space rooted in simplicity, care and connection to nature. Located in the quiet rural setting of Jauuri, just 10 minutes from La Fortuna, it feels tucked away in the forest, yet close to everything you might need.',
-        'Casa Oropéndola est une petite maison et un espace de retraite intentionnel, fondé sur la simplicité, le soin et la connexion avec la nature. Située dans le cadre rural et calme de Jauuri, à seulement 10 minutes de La Fortuna, elle semble nichée dans la forêt tout en restant proche de tout ce dont tu pourrais avoir besoin.',
+        'Casa Oropéndola es un hogar y espacio de retiro pequeño e intencional, basado en la sencillez, el cuidado y la conexión con la naturaleza. Ubicada en el tranquilo entorno rural de Jaúuri, a solo 10 minutos de La Fortuna, se siente escondida en el bosque y a la vez cerca de todo lo que puedas necesitar.',
+        'Casa Oropéndola is a small, intentional home and retreat space rooted in simplicity, care and connection to nature. Located in the quiet rural setting of Jaúuri, just 10 minutes from La Fortuna, it feels tucked away in the forest, yet close to everything you might need.',
+        'Casa Oropéndola est une petite maison et un espace de retraite intentionnel, fondé sur la simplicité, le soin et la connexion avec la nature. Située dans le cadre rural et calme de Jaúuri, à seulement 10 minutes de La Fortuna, elle semble nichée dans la forêt tout en restant proche de tout ce dont tu pourrais avoir besoin.',
       ) },
       { kind: 'p', text: l(
         'Tu habitación privada se conecta con la casa principal por un sendero exterior. Ofrece comodidad, privacidad y un lugar suave donde llegar durante toda tu estancia.',
@@ -351,9 +352,9 @@ export const overview: Section[] = [
         l('Diseño cuidado, con colores serenos y materiales naturales', 'Thoughtful design with calming colors and natural materials', 'Un design soigné, aux couleurs apaisantes et aux matériaux naturels'),
       ] },
       { kind: 'p', text: l(
-        'Estarás rodeado por la vida silvestre de la zona: perezosos, tucanes, oropéndolas, ranas e incontables aves e insectos suelen estar cerca. Aunque se siente escondida en el rústico poblado de Jauuri, la animada ciudad de La Fortuna está a menos de 10 minutos en carro.',
-        'You will be surrounded by the wildlife of the area: sloths, toucans, oropéndolas, frogs and countless birds and insects are often nearby. While it feels tucked away in the rustic village of Jauuri, the vibrant town of La Fortuna is less than 10 minutes away by car.',
-        'Tu seras entouré par la faune de la région : paresseux, toucans, oropéndolas, grenouilles et d’innombrables oiseaux et insectes sont souvent tout près. Même si elle semble cachée dans le village rustique de Jauuri, la ville animée de La Fortuna est à moins de 10 minutes en voiture.',
+        'Estarás rodeado por la vida silvestre de la zona: perezosos, tucanes, oropéndolas, ranas e incontables aves e insectos suelen estar cerca. Aunque se siente escondida en el rústico poblado de Jaúuri, la animada ciudad de La Fortuna está a menos de 10 minutos en carro.',
+        'You will be surrounded by the wildlife of the area: sloths, toucans, oropéndolas, frogs and countless birds and insects are often nearby. While it feels tucked away in the rustic village of Jaúuri, the vibrant town of La Fortuna is less than 10 minutes away by car.',
+        'Tu seras entouré par la faune de la région : paresseux, toucans, oropéndolas, grenouilles et d’innombrables oiseaux et insectes sont souvent tout près. Même si elle semble cachée dans le village rustique de Jaúuri, la ville animée de La Fortuna est à moins de 10 minutes en voiture.',
       ) },
       { kind: 'note', text: l(
         'Ten en cuenta: en Casa Oropéndola también viven perros y gatos amigables, así que las personas con alergia a las mascotas deben considerarlo.',

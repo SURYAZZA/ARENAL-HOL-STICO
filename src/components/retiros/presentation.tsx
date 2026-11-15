@@ -16,16 +16,12 @@ export function RetreatPresentation() {
     <main className="retreats-page">
       {/* Los textos de la portada se dejan en inglés, igual que en el documento original. */}
       <section className="retreat-cover" aria-label="Oropéndola Retreats">
-        <p className="rc-corner rc-tl">The Breathing Blueprint</p>
-        <p className="rc-corner rc-tr">Hosted by Casa Oropéndola</p>
         <div className="rc-center">
           <h1>
             <img src="/img/oropendola-wordmark.svg" alt="Oropéndola Retreats" />
           </h1>
           <p className="rc-sub">An Arenal Holístico Experience</p>
         </div>
-        <p className="rc-corner rc-bl">The Breathing Blueprint</p>
-        <p className="rc-corner rc-br">Hosted by Casa Oropéndola</p>
       </section>
 
       <section className="retreat-one">

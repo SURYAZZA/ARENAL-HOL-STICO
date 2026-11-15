@@ -301,9 +301,6 @@ dd { margin: 0.15rem 0 0; }
 /* ------------------------------------------------------------------ */
 .retreat-cover { position: relative; min-height: min(88dvh, 56.25vw + 12rem); display: grid; place-items: center; padding: 5rem 6vw; color: #f4f1e8; text-align: center;
   background: #1c1e12 url('/img/retiro-portada.webp') center / cover no-repeat; overflow: hidden; }
-.rc-corner { position: absolute; margin: 0; font-size: clamp(0.56rem, 0.78vw, 0.72rem); letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.92; }
-.rc-tl { top: 2.2rem; left: 2.6vw; } .rc-tr { top: 2.2rem; right: 2.6vw; }
-.rc-bl { bottom: 2.2rem; left: 2.6vw; } .rc-br { bottom: 2.2rem; right: 2.6vw; }
 .rc-center { display: grid; justify-items: center; gap: clamp(2rem, 5vw, 4.2rem); }
 .rc-center h1 { margin: 0; line-height: 0; }
 .rc-center h1 img { width: min(38vw, 34rem); min-width: 15rem; height: auto; }
@@ -332,7 +329,11 @@ dd { margin: 0.15rem 0 0; }
 .ov-tagline { margin: 2rem 0 0; max-width: 22rem; font-family: Fraunces, Georgia, serif; font-size: 1.1rem; line-height: 1.5; }
 .ov-section { padding: 2.8rem clamp(1.3rem, 6vw, 3.4rem); }
 .ov-section + .ov-section { border-top: 1px solid rgba(47, 53, 36, 0.12); }
-.ov-section.olive { background: rgba(150, 149, 59, 0.34) url('/img/papel-oliva.webp') center / cover; background-blend-mode: soft-light; }
+/* Páginas verdes: la misma textura de papel que las crema (misma nitidez), teñida de verde oliva oscuro,
+   con texto crema para que se lea bien. */
+.ov-section.olive { color: #f7f4e6; background: #667030 url('/img/papel-crema.webp') top center / 100% auto repeat-y; background-blend-mode: multiply; }
+.ov-section.olive .ov-days { background: rgba(22, 28, 12, 0.24); }
+.ov-section.olive p.ov-note { opacity: 0.9; }
 .ov-section h3 { font-family: "Outfit", sans-serif; font-weight: 460; letter-spacing: 0; font-size: 1.7rem; margin: 0 0 1.3rem; }
 .ov-section h4 { font-family: "Outfit", sans-serif; font-weight: 560; letter-spacing: 0; font-size: 1rem; margin: 1.5rem 0 0.5rem; }
 .ov-section p { margin: 0 0 0.9rem; line-height: 1.65; text-align: justify; hyphens: auto; }
@@ -393,9 +394,7 @@ dd { margin: 0.15rem 0 0; }
 
 @media (max-width: 860px) {
   .retreat-cover { min-height: 78dvh; }
-  .rc-corner { font-size: 0.5rem; }
-  .rc-tl, .rc-tr { top: 1.3rem; } .rc-bl, .rc-br { bottom: 1.3rem; }
-  .rc-center h1 img { width: 74vw; }
+    .rc-center h1 img { width: 74vw; }
   .rc-sub { letter-spacing: 0.28em; font-size: 0.56rem; }
   .retreat-one { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 6vw; }
   .retreat-one > img { max-height: 22rem; }
