@@ -243,7 +243,7 @@ export const overview: Section[] = [
     id: 'personalizacion',
     title: l('Personalización', 'Personalization', 'Personnalisation'),
     tone: 'paper',
-    band: '/img/retiro-banda-bosque.webp',
+    band: '/img/retiro-banda-hojas.webp',
     blocks: [
       { kind: 'p', text: l(
         'Tu retiro está diseñado para honrar tu ritmo y tus preferencias. Desde las caminatas hasta las sesiones de bienestar y las comidas, cada elemento puede personalizarse para acompañar cómo te sientes cada día. Puedes elegir entre las siguientes opciones:',
@@ -331,7 +331,7 @@ export const overview: Section[] = [
     id: 'alojamiento',
     title: l('Alojamiento', 'Accommodation', 'Hébergement'),
     tone: 'paper',
-    band: '/img/retiro-banda-niebla.webp',
+    band: '/img/retiro-banda-perezoso.webp',
     blocks: [
       { kind: 'p', text: l(
         'Casa Oropéndola es un hogar y espacio de retiro pequeño e intencional, basado en la sencillez, el cuidado y la conexión con la naturaleza. Ubicada en el tranquilo entorno rural de Jaúuri, a solo 10 minutos de La Fortuna, se siente escondida en el bosque y a la vez cerca de todo lo que puedas necesitar.',

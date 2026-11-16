@@ -4,8 +4,8 @@ import { X } from 'lucide-react';
 import { overview, ui, type Block } from '@/data/retreat';
 import { useLang } from '@/lib/i18n';
 
-const CONTACT_EMAIL = 'oropendolaretreats@gmail.com';
-const CONTACT_INSTAGRAM = 'oropendolaretreats';
+const CONTACT_EMAIL = 'arenalholistico@gmail.com';
+const CONTACT_INSTAGRAM = 'arenal_holistico';
 
 /** Dibuja un bloque del overview con la misma forma que tiene en el PDF. */
 function BlockView({ block }: { block: Block }) {
