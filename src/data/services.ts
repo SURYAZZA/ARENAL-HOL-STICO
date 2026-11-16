@@ -54,7 +54,7 @@ export const services: Service[] = [
     slug: 'retiros',
     name: "Retiros",
     summary:
-      "Estancias de 3 a 10 días que unen varios de estos servicios en un solo viaje. Para quien organiza y para quienes viajan sin rutina: un camino guiado por el estilo de vida holístico para entender su verdadero significado y el propósito que tiene en tu vida. Para quienes buscan, más que una experiencia, un verdadero aprendizaje.",
+      "Estancias de 3 a 9 días que unen varios de estos servicios en un solo viaje. Para quien organiza y para quienes viajan sin rutina: un camino guiado por el estilo de vida holístico para entender su verdadero significado y el propósito que tiene en tu vida. Para quienes buscan, más que una experiencia, un verdadero aprendizaje.",
     image: '/img/servicio-retiros.webp',
     retreat: true,
   },

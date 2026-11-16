@@ -51,9 +51,9 @@ const ui = {
     fr: "De l'inspiration pour vivre en équilibre.",
   },
   'journal.intro': {
-    es: 'Síguenos en nuestras redes sociales para seguir de cerca nuestras inspiraciones, objetivos y espacios de armonía.',
-    en: 'Follow us on social media to keep up with our inspirations, goals and spaces of harmony.',
-    fr: "Suis-nous sur les réseaux sociaux pour suivre de près nos inspirations, nos objectifs et nos espaces d'harmonie.",
+    es: "Síguenos en nuestras redes sociales para conocer de cerca nuestras inspiraciones, objetivos y espacios de armonía.",
+    en: "Follow us on social media to keep up with our inspirations, goals and spaces of harmony.",
+    fr: "Suis-nous sur les réseaux sociaux pour découvrir de près nos inspirations, nos objectifs et nos espaces d'harmonie.",
   },
   'journal.read': { es: 'Leer más', en: 'Read more', fr: 'Lire la suite' },
   'journal.less': { es: 'Leer menos', en: 'Read less', fr: 'Réduire' },
@@ -83,19 +83,19 @@ const ui = {
     fr: 'Une équipe unie par la nature, la paix intérieure et le bien-être.',
   },
   'about.bio1': {
-    es: 'Catorce años de experiencia impartiendo clases de yoga, meditaciones y sonoterapias como profesora certificada, guía ceremonial y experta en rituales de Cacao e inmersiones profundas en la naturaleza y el bosque, experta en aromaterapia y flores de Bach.',
-    en: 'Fourteen years of experience teaching yoga classes, meditations and sound therapies as a certified teacher, ceremonial guide and expert in Cacao rituals and deep immersions in nature and the forest, with expertise in aromatherapy and Bach flowers.',
-    fr: "Quatorze ans d'expérience dans l'enseignement du yoga, des méditations et des sonothérapies en tant que professeure certifiée, guide cérémonielle et experte des rituels de cacao et des immersions profondes dans la nature et la forêt, experte en aromathérapie et en fleurs de Bach.",
+    es: "Catorce años de experiencia impartiendo clases de yoga, meditaciones y sonoterapias como profesora certificada. Guía ceremonial y experta en rituales de cacao, en inmersiones profundas en la naturaleza y el bosque, en aromaterapia y en flores de Bach.",
+    en: "Fourteen years of experience teaching yoga classes, meditations and sound therapies as a certified teacher. Ceremonial guide and expert in cacao rituals, deep immersions in nature and the forest, aromatherapy and Bach flower remedies.",
+    fr: "Quatorze ans d'expérience dans l'enseignement du yoga, des méditations et des sonothérapies en tant que professeure certifiée. Guide cérémonielle et experte des rituels de cacao, des immersions profondes dans la nature et la forêt, de l'aromathérapie et des fleurs de Bach.",
   },
   'about.bio2': {
-    es: 'Profesor certificado de Yoga, meditaciones y sonoterapias, con una década de experiencia, trece años impartiendo talleres de inteligencia emocional y soluciones humanas, entrenado en diagnósticos con resonancia electromagnética.',
-    en: 'Certified teacher of Yoga, meditations and sound therapies with a decade of experience, thirteen years leading workshops on emotional intelligence and human solutions, trained in diagnostics using electromagnetic resonance.',
-    fr: "Professeur certifié de yoga, de méditations et de sonothérapies, avec dix ans d'expérience, treize ans d'animation d'ateliers d'intelligence émotionnelle et de solutions humaines, formé aux diagnostics par résonance électromagnétique.",
+    es: "Profesor certificado de yoga, meditaciones y sonoterapias, con una década de experiencia y trece años impartiendo talleres de inteligencia emocional y soluciones humanas. Entrenado en diagnósticos con resonancia electromagnética.",
+    en: "Certified teacher of yoga, meditations and sound therapies, with a decade of experience and thirteen years leading workshops on emotional intelligence and human solutions. Trained in diagnostics using electromagnetic resonance.",
+    fr: "Professeur certifié de yoga, de méditations et de sonothérapies, avec dix ans d'expérience et treize ans d'animation d'ateliers d'intelligence émotionnelle et de solutions humaines. Formé aux diagnostics par résonance électromagnétique.",
   },
   'about.bio3': {
-    es: 'Once años de experiencia como profesora de Yoga, e impartiendo meditaciones y sonoterapias guiadas, certificada desde hace seis años para terapias Reiki, y profesora de Pilates, administradora y guía de retiros espirituales, en el corazón del Arenal.',
-    en: 'Eleven years of experience as a Yoga teacher, leading guided meditations and sound therapies, certified for Reiki therapies for six years, and a Pilates teacher, administrator and guide of spiritual retreats, in the heart of Arenal.',
-    fr: "Onze ans d'expérience comme professeure de yoga, animant des méditations et des sonothérapies guidées, certifiée en thérapies Reiki depuis six ans, professeure de Pilates, administratrice et guide de retraites spirituelles, au cœur d'Arenal.",
+    es: "Once años de experiencia como profesora de yoga y guía de meditaciones y sonoterapias. Certificada desde hace seis años en terapias de reiki, profesora de pilates, y administradora y guía de retiros espirituales en el corazón del Arenal.",
+    en: "Eleven years of experience as a yoga teacher and guide of meditations and sound therapies. Certified in Reiki therapies for six years, Pilates teacher, and administrator and guide of spiritual retreats in the heart of Arenal.",
+    fr: "Onze ans d'expérience comme professeure de yoga et guide de méditations et de sonothérapies. Certifiée en thérapies de reiki depuis six ans, professeure de Pilates, administratrice et guide de retraites spirituelles au cœur d'Arenal.",
   },
 
   'reviews.eyebrow': { es: 'Voces', en: 'Voices', fr: 'Voix' },
@@ -109,9 +109,9 @@ const ui = {
   'reviews.name': { es: 'Nombre', en: 'Name', fr: 'Nom' },
   'reviews.org': { es: 'Organización', en: 'Organization', fr: 'Organisation' },
   'reviews.orgPlaceholder': {
-    es: 'Hotel, agencia o equipo',
-    en: 'Hotel, agency or team',
-    fr: 'Hôtel, agence ou équipe',
+    es: "Empresa, organización o equipo",
+    en: "Company, organization or team",
+    fr: "Entreprise, organisation ou équipe",
   },
   'reviews.rating': { es: 'Valoración', en: 'Rating', fr: 'Évaluation' },
   'reviews.review': { es: 'Reseña', en: 'Review', fr: 'Avis' },
@@ -119,9 +119,9 @@ const ui = {
   'reviews.cancel': { es: 'Cancelar', en: 'Cancel', fr: 'Annuler' },
   'reviews.sending': { es: 'Enviando…', en: 'Sending…', fr: 'Envoi…' },
   'reviews.ok': {
-    es: 'Gracias. Tu reseña quedó recibida y se publicará cuando la revisemos.',
-    en: 'Thank you. Your review has been received and will be published once we review it.',
-    fr: 'Merci. Ton avis a bien été reçu et sera publié après vérification.',
+    es: "Gracias. Recibimos tu reseña y se publicará cuando la revisemos.",
+    en: "Thank you. We received your review and it will be published once we have checked it.",
+    fr: "Merci. Nous avons bien reçu ton avis ; il sera publié après vérification.",
   },
   'reviews.error': {
     es: 'No pudimos guardar la reseña. Inténtalo de nuevo.',
@@ -140,20 +140,32 @@ const ui = {
     fr: 'Ton prochain pas commence ici.',
   },
   'contact.intro': {
-    es: 'Cuéntanos si buscas un servicio para tu hotel, una agencia o un retiro. Si dejas un correo de aviso en el panel interno, también llega una notificación.',
-    en: 'Tell us if you are looking for a service for your hotel, an agency or a retreat. If you leave a notice email in the internal panel, a notification also arrives.',
-    fr: "Dis-nous si tu cherches un service pour ton hôtel, une agence ou une retraite. Si tu laisses un e-mail d'avis dans le panneau interne, une notification arrive aussi.",
+    es: "Cuéntanos si buscas un servicio para tu organización, un evento o un retiro. Te responderemos lo antes posible.",
+    en: "Tell us if you are looking for a service for your organization, an event or a retreat. We will reply as soon as possible.",
+    fr: "Dis-nous si tu cherches un service pour ton organisation, un événement ou une retraite. Nous te répondrons dès que possible.",
   },
   'contact.name': { es: 'Nombre', en: 'Name', fr: 'Nom' },
   'contact.email': { es: 'Correo', en: 'Email', fr: 'E-mail' },
   'contact.org': { es: 'Organización', en: 'Organization', fr: 'Organisation' },
-  'contact.orgPlaceholder': { es: 'Hotel, agencia, equipo', en: 'Hotel, agency, team', fr: 'Hôtel, agence, équipe' },
+  'contact.orgPlaceholder': {
+    es: "Empresa, organización o equipo",
+    en: "Company, organization or team",
+    fr: "Entreprise, organisation ou équipe",
+  },
   'contact.interest': { es: 'Interés', en: 'Interest', fr: 'Intérêt' },
   'contact.general': { es: 'Consulta general', en: 'General inquiry', fr: 'Demande générale' },
-  'contact.affiliate': { es: 'Afiliado de retiros', en: 'Retreat affiliate', fr: 'Affilié des retraites' },
+  'contact.affiliate': {
+    es: "Afiliación a retiros",
+    en: "Retreats membership",
+    fr: "Affiliation aux retraites",
+  },
   'contact.event': { es: 'Evento', en: 'Event', fr: 'Événement' },
   'contact.message': { es: 'Mensaje', en: 'Message', fr: 'Message' },
-  'contact.submit': { es: 'Enviar aviso', en: 'Send notice', fr: "Envoyer l'avis" },
+  'contact.submit': {
+    es: "Enviar mensaje",
+    en: "Send message",
+    fr: "Envoyer le message",
+  },
   'contact.sending': { es: 'Enviando…', en: 'Sending…', fr: 'Envoi…' },
   'contact.ok': {
     es: 'Recibimos tu mensaje. Te escribiremos para continuar la conversación.',
@@ -223,9 +235,9 @@ const ui = {
     fr: 'Nous utilisons des cookies nécessaires au fonctionnement du site et, uniquement si tu l’autorises, pour mesurer les visites et les annonces.',
   },
   'cookies.analytics': {
-    es: 'Analítica — estadísticas propias de visitas.',
-    en: 'Analytics — our own visit statistics.',
-    fr: 'Analytique — statistiques de visites propres.',
+    es: "Analítica — estadísticas propias de visitas.",
+    en: "Analytics — our own visit statistics.",
+    fr: "Analytique — nos propres statistiques de visites.",
   },
   'cookies.marketing': {
     es: 'Marketing — medición de anuncios.',
@@ -233,9 +245,9 @@ const ui = {
     fr: 'Marketing — mesure des annonces.',
   },
   'cookies.platform': {
-    es: 'Analítica de la plataforma — Hostinger mejora la tienda sin identificarte.',
-    en: 'Platform analytics — Hostinger improves the store without identifying you.',
-    fr: 'Analytique de la plateforme — Hostinger améliore la boutique sans t’identifier.',
+    es: "Analítica de la plataforma — Hostinger mejora su servicio sin identificarte.",
+    en: "Platform analytics — Hostinger improves its service without identifying you.",
+    fr: "Analytique de la plateforme — Hostinger améliore son service sans t’identifier.",
   },
   'cookies.reject': { es: 'Rechazar opcionales', en: 'Reject optional', fr: 'Refuser les optionnels' },
   'cookies.save': { es: 'Guardar elección', en: 'Save choice', fr: 'Enregistrer le choix' },
@@ -321,9 +333,9 @@ export const serviceCopy: Record<string, ServiceCopy> = {
   retiros: {
     name: { es: "Retiros", en: "Retreats", fr: "Retraites" },
     summary: {
-      es: "Estancias de 3 a 10 días que unen varios de estos servicios en un solo viaje. Para quien organiza y para quienes viajan sin rutina: un camino guiado por el estilo de vida holístico para entender su verdadero significado y el propósito que tiene en tu vida. Para quienes buscan, más que una experiencia, un verdadero aprendizaje.",
-      en: "Stays of 3 to 10 days that bring several of these services together in a single trip. For those who organize and for those who travel without routine: a path guided by the holistic lifestyle to understand its true meaning and the purpose it holds in your life. For those who seek, more than an experience, real learning.",
-      fr: "Séjours de 3 à 10 jours qui réunissent plusieurs de ces services en un seul voyage. Pour celles et ceux qui organisent et pour celles et ceux qui voyagent sans routine : un chemin guidé par le mode de vie holistique pour comprendre sa véritable signification et le sens qu'il a dans ta vie. Pour celles et ceux qui cherchent, plus qu'une expérience, un véritable apprentissage.",
+      es: "Estancias de 3 a 9 días que unen varios de estos servicios en un solo viaje. Para quien organiza y para quienes viajan sin rutina: un camino guiado por el estilo de vida holístico para entender su verdadero significado y el propósito que tiene en tu vida. Para quienes buscan, más que una experiencia, un verdadero aprendizaje.",
+      en: "Stays of 3 to 9 days that bring several of these services together in a single trip. For those who organize and for those who travel without routine: a path guided by the holistic lifestyle to understand its true meaning and the purpose it holds in your life. For those who seek, more than an experience, real learning.",
+      fr: "Séjours de 3 à 9 jours qui réunissent plusieurs de ces services en un seul voyage. Pour celles et ceux qui organisent et pour celles et ceux qui voyagent sans routine : un chemin guidé par le mode de vie holistique pour comprendre sa véritable signification et le sens qu'il a dans ta vie. Pour celles et ceux qui cherchent, plus qu'une expérience, un véritable apprentissage.",
     },
   },
 };
@@ -345,6 +357,22 @@ export function inquiryMessageFor(lang: Lang, name: string) {
  * en vez de mostrar una traducción desactualizada.
  */
 const dynamic: Entry[] = [
+  // Blog: textos corregidos
+  {
+    es: 'Una combinación única de esencias y aromas para cada caso: fórmulas creadas a la medida.',
+    en: 'A unique combination of essences and aromas for each case: custom-made formulas.',
+    fr: 'Une combinaison unique d’essences et d’arômes pour chaque cas : des formules créées sur mesure.',
+  },
+  {
+    es: 'Un taller de 16 horas que ha ayudado a las personas a sentirse cómodas en sus relaciones sociales y laborales, a entender cómo pueden aprovechar su máximo potencial de manera sana y dar lo mejor de sí incluso en los detalles más pequeños, y cómo esto impacta positivamente tanto en el área vocacional como en la personal.',
+    en: 'A 16-hour workshop that has helped people feel comfortable in their social and work relationships, understand how they can make the most of their full potential in a healthy way and give their best even in the smallest details, and see how this positively impacts both the vocational and the personal spheres.',
+    fr: 'Un atelier de 16 heures qui a aidé les personnes à se sentir à l’aise dans leurs relations sociales et professionnelles, à comprendre comment exploiter leur plein potentiel de manière saine et donner le meilleur d’elles-mêmes jusque dans les plus petits détails, et comment cela a un impact positif tant sur le plan professionnel que personnel.',
+  },
+  {
+    es: 'La ceremonia de cacao que ofrecemos no pide creencias. Pide presencia. Una taza, una intención y un círculo pequeño bastan para que un equipo de viaje empiece el día en el mismo ritmo. Un espacio para detenerse y compartir, que une y conecta a las personas.',
+    en: 'The cacao ceremony we offer does not ask for beliefs. It asks for presence. A cup, an intention and a small circle are enough for a travel team to start the day at the same rhythm. A space to pause and share, one that unites and connects people.',
+    fr: 'La cérémonie de cacao que nous proposons ne demande pas de croyances. Elle demande de la présence. Une tasse, une intention et un petit cercle suffisent pour qu’une équipe de voyage commence la journée au même rythme. Un espace pour s’arrêter et partager, qui unit et relie les personnes.',
+  },
   // Blog
   { es: 'Aromaterapia Floral', en: 'Floral Aromatherapy', fr: 'Aromathérapie florale' },
   {
@@ -377,8 +405,8 @@ const dynamic: Entry[] = [
   },
   {
     es: 'La ceremonia de cacao que ofrecemos pide creencias. Pide presencia. Una taza, una intención y un círculo pequeño bastan para que un equipo de viaje empiece el día en el mismo ritmo. Unir y conectar a las personas por medio de un espacio para detenerse y compartir.',
-    en: 'The cacao ceremony we offer asks for beliefs. It asks for presence. A cup, an intention and a small circle are enough for a travel team to start the day at the same rhythm. To unite and connect people through a space to pause and share.',
-    fr: 'La cérémonie de cacao que nous proposons demande des croyances. Elle demande de la présence. Une tasse, une intention et un petit cercle suffisent pour qu’une équipe de voyage commence la journée au même rythme. Unir et relier les personnes à travers un espace pour s’arrêter et partager.',
+    en: 'The cacao ceremony we offer does not ask for beliefs. It asks for presence. A cup, an intention and a small circle are enough for a travel team to start the day at the same rhythm. To unite and connect people through a space to pause and share.',
+    fr: 'La cérémonie de cacao que nous proposons ne demande pas de croyances. Elle demande de la présence. Une tasse, une intention et un petit cercle suffisent pour qu’une équipe de voyage commence la journée au même rythme. Unir et relier les personnes à travers un espace pour s’arrêter et partager.',
   },
   {
     es: 'La ceremonia de cacao que ofrecemos a organizaciones no pide creencias. Pide presencia. Una taza, una intención y un círculo pequeño bastan para que un equipo de viaje empiece el día en el mismo ritmo.',

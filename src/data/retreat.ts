@@ -252,7 +252,7 @@ export const overview: Section[] = [
       ) },
       { kind: 'sub', text: l('Caminata en la naturaleza', 'Nature Walk', 'Marche en nature') },
       { kind: 'option', title: l('Mirador El Silencio', 'Mirador El Silencio', 'Mirador El Silencio'), text: l(
-        'Un sistema de senderos tranquilo entre bosque frondoso, con vistas cercanas a una antigua colada de roca volcánica del Volcán Arenal. Cuatro rutas permiten una caminata suave y flexible, ideal para días de detox ligero o para un tiempo lento y consciente en la naturaleza.',
+        'Un sistema de senderos tranquilo entre bosque frondoso, con vistas cercanas a una antigua colada de roca volcánica del volcán Arenal. Cuatro rutas permiten una caminata suave y flexible, ideal para días de detox ligero o para un tiempo lento y consciente en la naturaleza.',
         'A quiet trail system through lush forest with close views of an ancient volcanic rock flow from Arenal Volcano. Four route options allow for a gentle, flexible walk, ideal for lighter detox days or slow, mindful nature time.',
         'Un réseau de sentiers tranquille à travers une forêt luxuriante, avec des vues proches sur une ancienne coulée de roche volcanique du volcan Arenal. Quatre parcours permettent une marche douce et flexible, idéale pour les jours de détox légère ou pour un moment lent et conscient en nature.',
       ) },

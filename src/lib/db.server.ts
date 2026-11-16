@@ -219,6 +219,7 @@ async function setup(): Promise<void> {
 		}
 	}
 	await localizeImages();
+	await fixBlogWording();
 	await measureCovers();
 	logger.info('Base de datos lista');
 }
@@ -230,6 +231,22 @@ const toLocal = (text: string): string =>
 		const name = decodeURIComponent(url.split('/').pop()!.split('?')[0]).replace(/[^\w.-]/g, '_');
 		return LOCAL_IMAGES[name] ? `/img/${LOCAL_IMAGES[name]}` : url;
 	});
+
+/** Correcciones de redacción en publicaciones ya guardadas. Cada reemplazo solo actúa si el texto antiguo sigue ahí. */
+const BLOG_FIXES: [string, string, string][] = [
+	['excerpt', 'Una combinación de esencias y aromas única para cada caso, fórmulas creadas a la medida.', 'Una combinación única de esencias y aromas para cada caso: fórmulas creadas a la medida.'],
+	['body', 'que ha ayudado a guiar a las personas a sentirse cómodas con sus relaciones sociales y laborales, para entender cómo pueden exprimir su máximo potencial', 'que ha ayudado a las personas a sentirse cómodas en sus relaciones sociales y laborales, a entender cómo pueden aprovechar su máximo potencial'],
+	['body', ', y como esto impacta positivamente tanto en el área vocacional, como en el área personal.', ', y cómo esto impacta positivamente tanto en el área vocacional como en la personal.'],
+	['body', 'La ceremonia de cacao que ofrecemos pide creencias.', 'La ceremonia de cacao que ofrecemos no pide creencias.'],
+	['body', 'Unir y conectar a las personas por medio de un espacio para detenerse y compartir.', 'Un espacio para detenerse y compartir, que une y conecta a las personas.'],
+];
+
+async function fixBlogWording(): Promise<void> {
+	const db = getPool();
+	for (const [column, before, after] of BLOG_FIXES) {
+		await db.query(`UPDATE blog_posts SET ${column} = REPLACE(${column}, ?, ?) WHERE ${column} LIKE ?`, [before, after, `%${before}%`]);
+	}
+}
 
 /** Corrige direcciones ya guardadas que apuntaban al CDN de Horizons. Solo toca filas que aún las tengan. */
 async function localizeImages(): Promise<void> {
