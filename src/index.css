@@ -300,7 +300,11 @@ dd { margin: 0.15rem 0 0; }
 /* Retiros: portada (réplica de la portada del Master Document)         */
 /* ------------------------------------------------------------------ */
 .retreat-cover { position: relative; min-height: min(88dvh, 56.25vw + 12rem); display: grid; place-items: center; padding: 5rem 6vw; color: #f4f1e8; text-align: center;
-  background: #1c1e12 url('/img/retiro-portada.webp') center / cover no-repeat; overflow: hidden; }
+  background: #1c1e12 url('/img/retiro-portada-1920.webp') center / cover no-repeat; overflow: hidden; }
+/* El fondo de la portada se sirve en el tamaño que corresponde a cada pantalla. */
+@media (max-width: 1280px) and (max-resolution: 1.5dppx) { .retreat-cover { background-image: url('/img/retiro-portada-1280.webp'); } }
+@media (min-width: 1921px), (min-width: 1281px) and (min-resolution: 1.5dppx) { .retreat-cover { background-image: url('/img/retiro-portada-2560.webp'); } }
+@media (max-width: 860px) and (orientation: portrait) { .retreat-cover { background-image: url('/img/retiro-portada-movil.webp'); } }
 .rc-center { display: grid; justify-items: center; gap: clamp(2rem, 5vw, 4.2rem); }
 .rc-center h1 { margin: 0; line-height: 0; }
 .rc-center h1 img { width: min(38vw, 34rem); min-width: 15rem; height: auto; }
