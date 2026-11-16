@@ -1,5 +1,5 @@
 export const LOGO =
-  '/img/c2d5cd835377916f63583a25d2b0bf4f.png';
+  '/img/logo-arenal.png';
 export const LOGO_LIGHT =
   '/img/c8ba3005e6abe46ff7cb7d3805a899b6.png';
 

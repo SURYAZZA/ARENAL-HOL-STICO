@@ -20,7 +20,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <a href="/" className="brand">
-        <img src={LOGO} alt="Arenal Holístico" width={72} height={82} />
+        <img src={LOGO} alt="Arenal Holístico" width={571} height={565} />
         <span>
           Arenal
           <em>Holístico</em>
