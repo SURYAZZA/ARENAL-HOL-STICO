@@ -28,5 +28,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: "deploy.zip"
-          target: "domains/teal-horse-312215.hostingersite.com/public_html"
+          target: "domains/arenalholistico.com/public_html"
           overwrite: true
